@@ -8,7 +8,6 @@ import java.util.Map;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.intellij.lexer.EmptyLexer;
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;

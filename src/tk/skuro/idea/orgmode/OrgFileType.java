@@ -5,7 +5,6 @@ import javax.swing.Icon;
 import org.jetbrains.annotations.NotNull;
 
 import com.intellij.openapi.fileTypes.LanguageFileType;
-import com.intellij.openapi.util.IconLoader;
 
 /**
  * @author Carlo Sciolla
