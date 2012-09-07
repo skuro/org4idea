@@ -1,0 +1,13 @@
+#+TITLE: org4idea: write org-mode files from IntelliJ
+
+* Introduction
+
+This plugin provides basic editing support for [[http://orgmode.org/][org-mode]] files in IntelliJ. It's still in its
+inception / pre-alpha / here-be-dragons phase. Use at your own risk.
+
+* Pending basic features
+
+  - [ ] proper file parsing
+  - [ ] folding
+  - [ ] syntax highlight
+  - [ ] tagging
