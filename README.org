@@ -1,5 +1,7 @@
 #+TITLE: org4idea: edit org-mode files from IntelliJ
 
+[[./media/screenshot.png]]
+
 * Introduction
 
 This plugin provides basic editing support for [[http://orgmode.org/][org-mode]] files in IntelliJ. It's still in its
