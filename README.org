@@ -14,7 +14,7 @@ inception / pre-alpha / here-be-dragons phase. Use at your own risk.
 
 * Credits
 
-[[http://skuro.tk][Carlo Sciolla]]
+Project author: [[http://skuro.tk][Carlo Sciolla]]
 
 * License
 
