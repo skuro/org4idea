@@ -11,3 +11,11 @@ inception / pre-alpha / here-be-dragons phase. Use at your own risk.
   - [ ] folding
   - [ ] syntax highlight
   - [ ] tagging
+
+* Credits
+
+[[http://skuro.tk][Carlo Sciolla]]
+
+* License
+
+All files in this repository except OrgMode logos are released under the [[https://github.com/skuro/org4idea/blob/master/LICENSE.txt][MIT license]].
