@@ -4,14 +4,15 @@
 
 * Introduction
 
-This plugin provides basic editing support for [[http://orgmode.org/][org-mode]] files in IntelliJ. It's still in its
-inception / pre-alpha / here-be-dragons phase. Use at your own risk.
+This plugin provides basic editing support for [[http://orgmode.org/][org-mode]] files in IntelliJ. At the moment, only
+ support for syntax highlight of comments and outlines is provided.
+
+*org4idea* is still in its inception / pre-alpha / here-be-dragons phase. Use at your own risk.
 
 * Pending basic features
 
   - [ ] proper file parsing
   - [ ] folding
-  - [ ] syntax highlight
   - [ ] tagging
 
 * Credits
