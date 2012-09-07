@@ -41,6 +41,6 @@ public class OrgFileType extends LanguageFileType {
 
     @Override
     public Icon getIcon() {
-        return IconLoader.getIcon("/org/fileType.png");
+        return OrgIcons.ORG_ICON;
     }
 }

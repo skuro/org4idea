@@ -11,5 +11,8 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <fileTypeFactory implementation="tk.skuro.idea.orgmode.OrgFileTypeFactory" />
+        <lang.parserDefinition language="OrgMode" implementationClass="tk.skuro.idea.orgmode.parser.OrgParserDefinition"/>
+        <syntaxHighlighter key="OrgMode" implementationClass="tk.skuro.idea.orgmode.highlight.OrgSyntaxHighlighter"/>
+        <colorSettingsPage implementation="tk.skuro.idea.orgmode.highlight.OrgColorSettingsPage"/>
     </extensions>
 </idea-plugin>
