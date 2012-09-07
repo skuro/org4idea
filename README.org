@@ -1,6 +1,6 @@
 #+TITLE: org4idea: edit org-mode files from IntelliJ
 
-[[./media/screenshot.png]]
+[[./master/media/screenshot.png]]
 
 * Introduction
 
