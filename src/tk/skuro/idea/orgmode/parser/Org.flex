@@ -16,7 +16,7 @@ import com.intellij.psi.tree.IElementType;
 
 WHITE_SPACE_CHAR=[\ \n\r\t\f]
 COMMENT="#"[^\r\n]*
-OUTLINE=\*+ [^\r\n]*
+OUTLINE=\*+ [\ \t\f]+ [^\r\n]*
 
 
 
