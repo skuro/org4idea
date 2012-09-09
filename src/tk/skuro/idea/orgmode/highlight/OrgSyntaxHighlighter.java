@@ -26,6 +26,7 @@ public class OrgSyntaxHighlighter extends SyntaxHighlighterBase {
     static {
         fillMap(ATTRIBUTES, OrgTokenTypes.COMMENTS, OrgHighlighterColors.COMMENTS_ATTR_KEY);
         fillMap(ATTRIBUTES, OrgTokenTypes.OUTLINES, OrgHighlighterColors.OUTLINE_ATTR_KEY);
+        fillMap(ATTRIBUTES, OrgTokenTypes.UNDERLINES, OrgHighlighterColors.UNDERLINE_ATTR_KEY);
     }
 
     @NotNull

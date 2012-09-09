@@ -49,6 +49,10 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
                 MessageBundle.message("org.editor.colorsettingspage.outline"),
                 OrgHighlighterColors.OUTLINE_ATTR_KEY)
         );
+        attributeDescriptors.add(new AttributesDescriptor(
+                MessageBundle.message("org.editor.colorsettingspage.underline"),
+                OrgHighlighterColors.UNDERLINE_ATTR_KEY)
+        );
     }
 
     @Override

@@ -16,14 +16,14 @@ import com.intellij.psi.tree.IElementType;
 
 WHITE_SPACE_CHAR=[\ \n\r\t\f]
 COMMENT="#"[^\r\n]*
-OUTLINE=\*+ [\ \t\f]+ [^\r\n]*
-
-
+UNDERLINE="_" .* "_"
+OUTLINE=[*]+ [\ \t\f]+ [^\r\n]*
 
 %%
 
-<YYINITIAL> {COMMENT}        { yybegin(YYINITIAL); return OrgTokenTypes.COMMENT; }
-<YYINITIAL> {OUTLINE}        { yybegin(YYINITIAL); return OrgTokenTypes.OUTLINE; }
+<YYINITIAL> ^{COMMENT}        { yybegin(YYINITIAL); return OrgTokenTypes.COMMENT; }
+<YYINITIAL> ^{OUTLINE}        { yybegin(YYINITIAL); return OrgTokenTypes.OUTLINE; }
 
 {WHITE_SPACE_CHAR}+                      { return OrgTokenTypes.WHITE_SPACE; }
+{UNDERLINE}                              { return OrgTokenTypes.UNDERLINE; }
 .                                        { return OrgTokenTypes.BAD_CHARACTER; }

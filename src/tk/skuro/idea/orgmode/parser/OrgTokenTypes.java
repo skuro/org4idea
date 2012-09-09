@@ -16,9 +16,11 @@ public interface OrgTokenTypes {
     public final static IElementType OUTLINE = new OrgElementType("ORG_OUTLINE");
     public final static IElementType TEXT = new OrgElementType("ORG_TEXT");
     public final static IElementType BOLD = new OrgElementType("ORG_BOLD");
-
     public final static IElementType ITALIC = new OrgElementType("ORG_ITALIC");
+    public final static IElementType UNDERLINE = new OrgElementType("ORG_UNDERLINE");
+
     public final static TokenSet WHITESPACES = TokenSet.create(WHITE_SPACE);
     public final static TokenSet COMMENTS = TokenSet.create(COMMENT);
     public final static TokenSet OUTLINES = TokenSet.create(OUTLINE);
+    public final static TokenSet UNDERLINES = TokenSet.create(UNDERLINE);
 }

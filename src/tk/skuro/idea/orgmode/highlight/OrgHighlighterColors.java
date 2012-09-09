@@ -3,6 +3,7 @@ package tk.skuro.idea.orgmode.highlight;
 import java.awt.Font;
 
 import com.intellij.openapi.editor.colors.TextAttributesKey;
+import com.intellij.openapi.editor.markup.EffectType;
 import com.intellij.openapi.editor.markup.TextAttributes;
 
 /**
@@ -15,6 +16,10 @@ public interface OrgHighlighterColors {
     );
 
     public static final TextAttributesKey OUTLINE_ATTR_KEY = TextAttributesKey.createTextAttributesKey(
-            "OUTLINE.COMMENT", new TextAttributes(null, null, null, null, Font.BOLD)
+            "ORG.OUTLINE", new TextAttributes(null, null, null, null, Font.BOLD)
+    );
+
+    public static final TextAttributesKey UNDERLINE_ATTR_KEY = TextAttributesKey.createTextAttributesKey(
+            "ORG.UNDERLINE", new TextAttributes(null, null, null, EffectType.LINE_UNDERSCORE, Font.PLAIN)
     );
 }
