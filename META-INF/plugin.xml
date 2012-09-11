@@ -2,7 +2,7 @@
     <name>Org4Idea</name>
     <description>An OrgMode editor for IntelliJ IDEA</description>
     <category>Custom Languages</category>
-    <version>0.1</version>
+    <version>0.1.1</version>
     <vendor email="skuro@skuro.tk" url="http://skuro.tk">Carlo Sciolla</vendor>
     <depends>com.intellij.modules.lang</depends>
 
