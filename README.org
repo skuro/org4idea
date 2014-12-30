@@ -10,6 +10,7 @@ This plugin provides basic editing support for [[http://orgmode.org/][org-mode]]
 *org4idea* is still in its inception / pre-alpha / here-be-dragons phase. Use at your own risk.
 
 * Pending basic features
+  - [X] spellcheckying
   - [ ] active live template
   - [ ] proper file parsing
   - [ ] bold, slant, code highlight
@@ -36,3 +37,8 @@ contributor: Adriean Khisbe
 * License
 
 All files in this repository except OrgMode logos are released under the [[https://github.com/skuro/org4idea/blob/master/LICENSE.txt][MIT license]].
+
+
+* Changelog
+
+- 0.2.0 :: add Spellchekying support, maven

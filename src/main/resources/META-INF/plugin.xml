@@ -2,7 +2,7 @@
     <name>Org4Idea</name>
     <description>An OrgMode editor for IntelliJ IDEA</description>
     <category>Custom Languages</category>
-    <version>0.1.1</version>
+    <version>0.2.0</version>
     <vendor email="skuro@skuro.tk" url="http://skuro.tk">Carlo Sciolla</vendor>
     <depends>com.intellij.modules.lang</depends>
 
@@ -14,5 +14,7 @@
         <lang.parserDefinition language="OrgMode" implementationClass="tk.skuro.idea.orgmode.parser.OrgParserDefinition"/>
         <syntaxHighlighter key="OrgMode" implementationClass="tk.skuro.idea.orgmode.highlight.OrgSyntaxHighlighter"/>
         <colorSettingsPage implementation="tk.skuro.idea.orgmode.highlight.OrgColorSettingsPage"/>
+        <spellchecker.support language="OrgMode"
+                              implementationClass="tk.skuro.idea.orgmode.spellcheckying.OrgSpellcheckingStrategy"/>
     </extensions>
 </idea-plugin>
