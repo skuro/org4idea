@@ -25,4 +25,5 @@ public interface OrgTokenTypes {
     public final static TokenSet COMMENTS = TokenSet.create(COMMENT);
     public final static TokenSet OUTLINES = TokenSet.create(OUTLINE);
     public final static TokenSet UNDERLINES = TokenSet.create(UNDERLINE);
+
 }
