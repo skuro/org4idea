@@ -9,6 +9,30 @@
     <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
     <idea-version since-build="107.105"/>
 
+    <description>
+        <![CDATA[
+        Idea plugin to edit <a href="http://orgmode.org/">OrgMode</a> files
+        <ul>
+            <li> supports basic outline and comments</li>
+            <li> supports spell checkying</li>
+        </ul>
+
+        More features on the go!
+        ]]>
+    </description>
+    <change-notes>
+        <![CDATA[
+                <p>0.2.0</p>
+                <ul>
+                    <li>support spellcheckying</li>
+                </ul>
+                <p>0.1.1</p>
+                <ul>
+                    <li>support underline text</li>
+                </ul>
+       ]]>
+    </change-notes>
+
     <extensions defaultExtensionNs="com.intellij">
         <fileTypeFactory implementation="tk.skuro.idea.orgmode.OrgFileTypeFactory" />
         <lang.parserDefinition language="OrgMode" implementationClass="tk.skuro.idea.orgmode.parser.OrgParserDefinition"/>
