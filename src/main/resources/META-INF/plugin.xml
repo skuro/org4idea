@@ -39,6 +39,7 @@
         <syntaxHighlighter key="OrgMode" implementationClass="tk.skuro.idea.orgmode.highlight.OrgSyntaxHighlighter"/>
         <colorSettingsPage implementation="tk.skuro.idea.orgmode.highlight.OrgColorSettingsPage"/>
         <spellchecker.support language="OrgMode"
-                              implementationClass="tk.skuro.idea.orgmode.spellcheckying.OrgSpellcheckingStrategy"/>
+                              implementationClass="tk.skuro.idea.orgmode.utils.OrgSpellcheckingStrategy"/>
+
     </extensions>
 </idea-plugin>

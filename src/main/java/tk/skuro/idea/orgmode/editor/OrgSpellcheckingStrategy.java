@@ -18,7 +18,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package tk.skuro.idea.orgmode.spellcheckying;
+package tk.skuro.idea.orgmode.editor;
 
 import com.intellij.psi.PsiElement;
 import com.intellij.spellchecker.tokenizer.SpellcheckingStrategy;
@@ -26,7 +26,7 @@ import com.intellij.spellchecker.tokenizer.Tokenizer;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * {@link com.intellij.spellchecker.tokenizer.SpellcheckingStrategy} for Markdown.
+ * {@link com.intellij.spellchecker.tokenizer.SpellcheckingStrategy} for Orgmode.
  *
  * @author Adriean Khisbe <adriean.khisbe@live.fr>
  * @since 0.2
