@@ -12,6 +12,7 @@ import com.intellij.psi.tree.IElementType;
  * @since 0.1
  */
 public class OrgParser implements PsiParser {
+
     @NotNull
     @Override
     public ASTNode parse(IElementType iElementType, PsiBuilder builder) {

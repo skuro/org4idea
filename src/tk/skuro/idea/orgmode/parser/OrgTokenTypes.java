@@ -5,12 +5,14 @@ import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.TokenSet;
 
 /**
+ * Org Tokens for lexing
+ *
  * @author Carlo Sciolla
  * @since 0.1
  */
 public interface OrgTokenTypes {
     public final static IElementType WHITE_SPACE = TokenType.WHITE_SPACE;
-    IElementType BAD_CHARACTER = TokenType.BAD_CHARACTER;
+    public final static IElementType BAD_CHARACTER = TokenType.BAD_CHARACTER;
 
     public final static IElementType COMMENT = new OrgElementType("ORG_COMMENT");
     public final static IElementType OUTLINE = new OrgElementType("ORG_OUTLINE");

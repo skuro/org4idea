@@ -22,6 +22,12 @@ public class MessageBundle {
     private MessageBundle() {
     }
 
+    /**
+     * Retrieve Message from bundle
+     * @param key message key
+     * @param params optinal value for placeholders
+     * @return Message associated to key
+     */
     public static String message(@PropertyKey(resourceBundle = PATH_TO_BUNDLE)String key, Object... params) {
         return CommonBundle.message(getBundle(), key, params);
     }

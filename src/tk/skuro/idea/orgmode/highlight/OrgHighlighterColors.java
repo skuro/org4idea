@@ -11,6 +11,8 @@ import com.intellij.openapi.editor.markup.TextAttributes;
  * @since 0.1
  */
 public interface OrgHighlighterColors {
+    // TODO obsolete, replace with new way to do.
+
     public static final TextAttributesKey COMMENTS_ATTR_KEY = TextAttributesKey.createTextAttributesKey(
             "ORG.COMMENT", new TextAttributes(null, null, null, null, Font.ITALIC)
     );

@@ -21,6 +21,8 @@ import com.intellij.openapi.options.colors.ColorSettingsPage;
 import com.intellij.openapi.util.io.FileUtil;
 
 /**
+ * Configuration for the color font page of Org language
+ *
  * @author Carlo Sciolla
  */
 public class OrgColorSettingsPage implements ColorSettingsPage {
@@ -32,7 +34,7 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
 
     private static final String SAMPLE_ORG_DOCUMENT_PATH = "/sample.org";
 
-    private static final String SAMPLE_ORG_DOCUMENT = loadSampleMarkdownDocument();
+    private static final String SAMPLE_ORG_DOCUMENT = loadSampleOrgDocument();
 
     /**
      * The set of {@link AttributesDescriptor} defining the configurable options in the dialog.
@@ -74,12 +76,12 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
      * @see #SAMPLE_ORG_DOCUMENT_PATH
      * @see #SAMPLE_ORG_DOCUMENT
      */
-    protected static String loadSampleMarkdownDocument() {
+    protected static String loadSampleOrgDocument() {
         try {
             return FileUtil.loadTextAndClose(new InputStreamReader(
                     OrgColorSettingsPage.class.getResourceAsStream(SAMPLE_ORG_DOCUMENT_PATH)));
         } catch (Exception e) {
-            LOGGER.error("Failed loading sample Markdown document", e);
+            LOGGER.error("Failed loading sample Org document", e);
         }
         return MessageBundle.message("org.editor.colorsettingspage.sample-loading-error");
     }
