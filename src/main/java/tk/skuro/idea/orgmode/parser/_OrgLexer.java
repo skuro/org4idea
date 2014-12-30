@@ -13,12 +13,12 @@ import com.intellij.psi.tree.IElementType;
  * <tt>src/tk/skuro/idea/orgmode/parser/Org.flex</tt>
  */
 class _OrgLexer implements FlexLexer {
-  /** initial size of the lookahead buffer */
-  private static final int ZZ_BUFFERSIZE = 16384;
-
   /** lexical states */
   public static final int YYINITIAL = 0;
-
+  /**
+   * initial size of the lookahead buffer
+   */
+  private static final int ZZ_BUFFERSIZE = 16384;
   /**
    * ZZ_LEXSTATE[l] is the state in the DFA for the lexical state l
    * ZZ_LEXSTATE[l+1] is the state in the DFA for the lexical state l
@@ -48,7 +48,107 @@ class _OrgLexer implements FlexLexer {
 
   private static final String ZZ_ACTION_PACKED_0 =
     "\2\0\1\1\1\2\1\1\1\3\1\1\1\0\1\4"+
-    "\1\5\1\0";
+            "\1\5\1\0";
+  /**
+   * Translates a state to a row index in the transition table
+   */
+  private static final int[] ZZ_ROWMAP = zzUnpackRowMap();
+  private static final String ZZ_ROWMAP_PACKED_0 =
+          "\0\0\0\7\0\16\0\25\0\34\0\43\0\52\0\34" +
+                  "\0\34\0\61\0\52";
+  /**
+   * The transition table of the DFA
+   */
+  private static final int[] ZZ_TRANS = zzUnpackTrans();
+  private static final String ZZ_TRANS_PACKED_0 =
+          "\1\3\1\4\1\3\1\4\1\5\1\4\2\3\1\4" +
+                  "\1\6\1\4\1\5\1\4\1\7\10\0\1\4\1\0" +
+                  "\1\4\1\0\1\4\1\0\4\10\1\11\1\0\1\10" +
+                  "\3\6\1\0\1\6\1\0\1\6\1\0\1\12\4\0" +
+                  "\1\13\3\12\1\0\1\12\1\0\1\12";
+  /* error codes */
+  private static final int ZZ_UNKNOWN_ERROR = 0;
+  private static final int ZZ_NO_MATCH = 1;
+  private static final int ZZ_PUSHBACK_2BIG = 2;
+  private static final char[] EMPTY_BUFFER = new char[0];
+  private static final int YYEOF = -1;
+  /* error messages for the codes above */
+  private static final String ZZ_ERROR_MSG[] = {
+          "Unkown internal scanner error",
+          "Error: could not match input",
+          "Error: pushback value was too large"
+  };
+  /**
+   * ZZ_ATTRIBUTE[aState] contains the attributes of state <code>aState</code>
+   */
+  private static final int[] ZZ_ATTRIBUTE = zzUnpackAttribute();
+  private static final String ZZ_ATTRIBUTE_PACKED_0 =
+          "\2\0\1\11\4\1\1\0\2\1\1\0";
+  private static java.io.Reader zzReader = null; // Fake
+  /**
+   * the current state of the DFA
+   */
+  private int zzState;
+  /**
+   * the current lexical state
+   */
+  private int zzLexicalState = YYINITIAL;
+  /**
+   * this buffer contains the current text to be matched and is
+   * the source of the yytext() string
+   */
+  private CharSequence zzBuffer = "";
+  /**
+   * this buffer may contains the current text array to be matched when it is cheap to acquire it
+   */
+  private char[] zzBufferArray;
+  /**
+   * the textposition at the last accepting state
+   */
+  private int zzMarkedPos;
+  /**
+   * the textposition at the last state to be included in yytext
+   */
+  private int zzPushbackPos;
+  /**
+   * the current text position in the buffer
+   */
+  private int zzCurrentPos;
+  /**
+   * startRead marks the beginning of the yytext() string in the buffer
+   */
+  private int zzStartRead;
+  /**
+   * endRead marks the last character in the buffer, that has been read
+   * from input
+   */
+  private int zzEndRead;
+  /**
+   * zzAtBOL == true <=> the scanner is currently at the beginning of a line
+   */
+  private boolean zzAtBOL = true;
+  /**
+   * zzAtEOF == true <=> the scanner is at the EOF
+   */
+  private boolean zzAtEOF;
+  /**
+   * denotes if the user-EOF-code has already been executed
+   */
+  private boolean zzEOFDone;
+
+  _OrgLexer(java.io.Reader in) {
+    this.zzReader = in;
+  }
+
+  /**
+   * Creates a new scanner.
+   * There is also java.io.Reader version of this constructor.
+   *
+   * @param   in  the java.io.Inputstream to read input from.
+   */
+  _OrgLexer(java.io.InputStream in) {
+    this(new java.io.InputStreamReader(in));
+  }
 
   private static int [] zzUnpackAction() {
     int [] result = new int[11];
@@ -69,16 +169,6 @@ class _OrgLexer implements FlexLexer {
     return j;
   }
 
-
-  /** 
-   * Translates a state to a row index in the transition table
-   */
-  private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
-
-  private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\7\0\16\0\25\0\34\0\43\0\52\0\34"+
-    "\0\34\0\61\0\52";
-
   private static int [] zzUnpackRowMap() {
     int [] result = new int[11];
     int offset = 0;
@@ -96,18 +186,6 @@ class _OrgLexer implements FlexLexer {
     }
     return j;
   }
-
-  /** 
-   * The transition table of the DFA
-   */
-  private static final int [] ZZ_TRANS = zzUnpackTrans();
-
-  private static final String ZZ_TRANS_PACKED_0 =
-    "\1\3\1\4\1\3\1\4\1\5\1\4\2\3\1\4"+
-    "\1\6\1\4\1\5\1\4\1\7\10\0\1\4\1\0"+
-    "\1\4\1\0\1\4\1\0\4\10\1\11\1\0\1\10"+
-    "\3\6\1\0\1\6\1\0\1\6\1\0\1\12\4\0"+
-    "\1\13\3\12\1\0\1\12\1\0\1\12";
 
   private static int [] zzUnpackTrans() {
     int [] result = new int[56];
@@ -129,30 +207,6 @@ class _OrgLexer implements FlexLexer {
     return j;
   }
 
-
-  /* error codes */
-  private static final int ZZ_UNKNOWN_ERROR = 0;
-  private static final int ZZ_NO_MATCH = 1;
-  private static final int ZZ_PUSHBACK_2BIG = 2;
-  private static final char[] EMPTY_BUFFER = new char[0];
-  private static final int YYEOF = -1;
-  private static java.io.Reader zzReader = null; // Fake
-
-  /* error messages for the codes above */
-  private static final String ZZ_ERROR_MSG[] = {
-    "Unkown internal scanner error",
-    "Error: could not match input",
-    "Error: pushback value was too large"
-  };
-
-  /**
-   * ZZ_ATTRIBUTE[aState] contains the attributes of state <code>aState</code>
-   */
-  private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
-
-  private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\2\0\1\11\4\1\1\0\2\1\1\0";
-
   private static int [] zzUnpackAttribute() {
     int [] result = new int[11];
     int offset = 0;
@@ -170,61 +224,6 @@ class _OrgLexer implements FlexLexer {
       do result[j++] = value; while (--count > 0);
     }
     return j;
-  }
-
-  /** the current state of the DFA */
-  private int zzState;
-
-  /** the current lexical state */
-  private int zzLexicalState = YYINITIAL;
-
-  /** this buffer contains the current text to be matched and is
-      the source of the yytext() string */
-  private CharSequence zzBuffer = "";
-
-  /** this buffer may contains the current text array to be matched when it is cheap to acquire it */
-  private char[] zzBufferArray;
-
-  /** the textposition at the last accepting state */
-  private int zzMarkedPos;
-
-  /** the textposition at the last state to be included in yytext */
-  private int zzPushbackPos;
-
-  /** the current text position in the buffer */
-  private int zzCurrentPos;
-
-  /** startRead marks the beginning of the yytext() string in the buffer */
-  private int zzStartRead;
-
-  /** endRead marks the last character in the buffer, that has been read
-      from input */
-  private int zzEndRead;
-
-  /**
-   * zzAtBOL == true <=> the scanner is currently at the beginning of a line
-   */
-  private boolean zzAtBOL = true;
-
-  /** zzAtEOF == true <=> the scanner is at the EOF */
-  private boolean zzAtEOF;
-
-  /** denotes if the user-EOF-code has already been executed */
-  private boolean zzEOFDone;
-
-
-  _OrgLexer(java.io.Reader in) {
-    this.zzReader = in;
-  }
-
-  /**
-   * Creates a new scanner.
-   * There is also java.io.Reader version of this constructor.
-   *
-   * @param   in  the java.io.Inputstream to read input from.
-   */
-  _OrgLexer(java.io.InputStream in) {
-    this(new java.io.InputStreamReader(in));
   }
 
   /** 

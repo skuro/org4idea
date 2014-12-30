@@ -14,10 +14,9 @@ import com.intellij.CommonBundle;
  * @since 0.1
  */
 public class MessageBundle {
-    private static Reference<ResourceBundle> reference;
-
     @NonNls
     protected static final String PATH_TO_BUNDLE = "messages.MessageBundle";
+    private static Reference<ResourceBundle> reference;
 
     private MessageBundle() {
     }

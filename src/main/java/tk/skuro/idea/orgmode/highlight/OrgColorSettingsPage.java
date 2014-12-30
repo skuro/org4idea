@@ -57,17 +57,6 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
         );
     }
 
-    @Override
-    public Icon getIcon() {
-        return OrgIcons.ORG_ICON;
-    }
-
-    @NotNull
-    @Override
-    public SyntaxHighlighter getHighlighter() {
-        return new OrgSyntaxHighlighter();
-    }
-
     /**
      * Load the sample text to be displayed in the preview pane.
      *
@@ -84,6 +73,17 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
             LOGGER.error("Failed loading sample Org document", e);
         }
         return MessageBundle.message("org.editor.colorsettingspage.sample-loading-error");
+    }
+
+    @Override
+    public Icon getIcon() {
+        return OrgIcons.ORG_ICON;
+    }
+
+    @NotNull
+    @Override
+    public SyntaxHighlighter getHighlighter() {
+        return new OrgSyntaxHighlighter();
     }
 
     @NotNull
