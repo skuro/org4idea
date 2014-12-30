@@ -10,14 +10,28 @@ This plugin provides basic editing support for [[http://orgmode.org/][org-mode]]
 *org4idea* is still in its inception / pre-alpha / here-be-dragons phase. Use at your own risk.
 
 * Pending basic features
-
+  - [ ] active live template
   - [ ] proper file parsing
+  - [ ] bold, slant, code highlight
   - [ ] folding
   - [ ] tagging
+
+* Building from source
+- setup :: Open the module setting and select /Intellij IDEA Plugin SDK/ as project SDK
+- run/test : Use /Run Configuration/ to run the plugin and tests
+  # when there will be some
+- release :: /Build > Prepare plugin for deployment/ to generate the release package.
+# inspiration from idea-markdown
+Ensure that *Plugin DevKit* is activated (=Settings | Plugins=)
+
+# §TODO: see https://github.com/rholder/gradle-view to have inspired gradle build
 
 * Credits
 
 Project author: [[http://skuro.tk][Carlo Sciolla]]
+contributor: Adriean Khisbe
+
+# §todo: add paragraph about contribution
 
 * License
 
