@@ -11,9 +11,11 @@ import com.intellij.psi.tree.TokenSet;
  * @since 0.1
  */
 public interface OrgTokenTypes {
+    // maybe make a single declaration
+
     public final static IElementType WHITE_SPACE = TokenType.WHITE_SPACE;
     public final static IElementType BAD_CHARACTER = TokenType.BAD_CHARACTER;
-
+    public final static IElementType KEYWORD = new OrgElementType("ORG_KEYWORD");
     public final static IElementType COMMENT = new OrgElementType("ORG_COMMENT");
     public final static IElementType OUTLINE = new OrgElementType("ORG_OUTLINE");
     public final static IElementType TEXT = new OrgElementType("ORG_TEXT");
@@ -24,6 +26,7 @@ public interface OrgTokenTypes {
     public final static TokenSet WHITESPACES = TokenSet.create(WHITE_SPACE);
     public final static TokenSet COMMENTS = TokenSet.create(COMMENT);
     public final static TokenSet OUTLINES = TokenSet.create(OUTLINE);
+    public final static TokenSet KEYWORDS = TokenSet.create(KEYWORD);
     public final static TokenSet UNDERLINES = TokenSet.create(UNDERLINE);
 
 }

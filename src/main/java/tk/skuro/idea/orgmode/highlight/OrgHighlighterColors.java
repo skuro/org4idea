@@ -26,7 +26,7 @@ public interface OrgHighlighterColors {
     /**
      * Default style of comment keyword {@code #+TITLE}
      */
-    public static final TextAttributesKey COMMENTKEYWORD_ATTR_KEY = createTextAttributesKey("ORG.COMMENTKEYWORD", LINE_COMMENT);
+    public static final TextAttributesKey KEYWORD_ATTR_KEY = createTextAttributesKey("ORG.KEYWORD", LINE_COMMENT);
 
 
     /**

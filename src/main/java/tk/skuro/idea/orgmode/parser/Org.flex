@@ -21,7 +21,7 @@ import static tk.skuro.idea.orgmode.parser.OrgTokenTypes.*;
 WHITE_SPACE_CHAR = [\ \t\f\n\r]
 COMMENT =[\ \t]*"# "[^\r\n]*
 // FIXME Leading whitespace not working...
-// TODO: "Affiliated Keywords" #+/ (plus org comment need a space)
+KEYWORD=[\ \t]*"#+"[^\r\n]+
 
 UNDERLINE = "_" .* "_"
 // see markdown, and replicate for bold verbatim and else
@@ -32,6 +32,7 @@ OUTLINE = [*]+ [\ \t\f]+ [^\r\n]*
 
 <YYINITIAL> ^{COMMENT}       { yybegin(YYINITIAL); return COMMENT; }
 <YYINITIAL> ^{OUTLINE}        { yybegin(YYINITIAL); return OUTLINE; }
+<YYINITIAL> ^{KEYWORD}        { yybegin(YYINITIAL); return KEYWORD; }
 
 {WHITE_SPACE_CHAR}+                      { return WHITE_SPACE; }
 {UNDERLINE}                              { return UNDERLINE; }

@@ -30,7 +30,7 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
     /**
      * The {@link Logger}.
      */
-    private final static Logger LOGGER = Logger.getInstance(OrgColorSettingsPage.class.getName());
+    private final static Logger LOGGER = Logger.getInstance(OrgColorSettingsPage.class);
 
     private static final String SAMPLE_ORG_DOCUMENT_PATH = "/sample.org";
 
@@ -43,6 +43,11 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
 
     public OrgColorSettingsPage() {
         // Populate attribute descriptors.
+
+        attributeDescriptors.add(new AttributesDescriptor(
+                        MessageBundle.message("org.editor.colorsettingspage.keyword"),
+                        OrgHighlighterColors.KEYWORD_ATTR_KEY)
+        );
         attributeDescriptors.add(new AttributesDescriptor(
                 MessageBundle.message("org.editor.colorsettingspage.comment"),
                 OrgHighlighterColors.COMMENTS_ATTR_KEY)
@@ -55,6 +60,7 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
                 MessageBundle.message("org.editor.colorsettingspage.underline"),
                 OrgHighlighterColors.UNDERLINE_ATTR_KEY)
         );
+        // maybe: extract static util function
     }
 
     /**
