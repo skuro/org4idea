@@ -26,7 +26,6 @@ This plugin provides basic editing support for [[http://orgmode.org/][org-mode]]
 Ensure that *Plugin DevKit* is activated (=Settings | Plugins=)
 
 # §TODO: see https://github.com/rholder/gradle-view to have inspired gradle build
-
 * Credits
 
 Project author: [[http://skuro.tk][Carlo Sciolla]]

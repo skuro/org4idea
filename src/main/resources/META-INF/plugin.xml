@@ -25,7 +25,8 @@
                 <p>0.2.0</p>
                 <ul>
                     <li>support spellcheckying</li>
-                    <li>Live templates</li>
+                    <li>live templates</li>
+                    <li>support todo indexing</li>
                 </ul>
                 <p>0.1.1</p>
                 <ul>
@@ -44,6 +45,9 @@
 
         <liveTemplateContext implementation="tk.skuro.idea.orgmode.editor.OrgContextType"/>
         <defaultLiveTemplatesProvider implementation="tk.skuro.idea.orgmode.editor.OrgLiveTemplatesProvider"/>
+
+        <todoIndexer filetype="OrgMode"
+                     implementationClass="tk.skuro.idea.orgmode.editor.indexer.OrgTodoIndexer"/>
 
     </extensions>
 </idea-plugin>
