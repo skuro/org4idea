@@ -11,8 +11,6 @@ import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAtt
  * @since 0.1
  */
 public interface OrgHighlighterColors {
-    // TODO obsolete, replace with new way to do.
-
 
     /**
      * Default style for outline
@@ -25,6 +23,26 @@ public interface OrgHighlighterColors {
      */
     public static final TextAttributesKey COMMENTS_ATTR_KEY = createTextAttributesKey("ORG.COMMENT", LINE_COMMENT);
 
+    /**
+     * Default style of comment keyword {@code #+TITLE}
+     */
+    public static final TextAttributesKey COMMENTKEYWORD_ATTR_KEY = createTextAttributesKey("ORG.COMMENTKEYWORD", LINE_COMMENT);
+
+
+    /**
+     * Default style of Bold text
+     */
+    public static final TextAttributesKey BOLD_ATTR_KEY = createTextAttributesKey("ORG.BOLD", STRING);
+
+    /**
+     * Default style of verbatim text
+     */
+    public static final TextAttributesKey VERBATIM_ATTR_KEY = createTextAttributesKey("ORG.VERBATIM", STRING);
+
+    /**
+     * Default style of strokethrought text
+     */
+    public static final TextAttributesKey STRIKETHROUGH_ATTR_KEY = createTextAttributesKey("ORG.STRIKETHROUGH", STRING);
     /**
      * Default style of underline text
      */
