@@ -22,11 +22,12 @@
     </description>
     <change-notes>
         <![CDATA[
-                <p>0.2.0</p>
+            <p>0.2.0</p>
                 <ul>
                     <li>support spellcheckying</li>
                     <li>live templates</li>
                     <li>support todo indexing</li>
+                    <li> keyword/blocs highlighting</li>
                 </ul>
                 <p>0.1.1</p>
                 <ul>

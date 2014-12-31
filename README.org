@@ -12,8 +12,9 @@ This plugin provides basic editing support for [[http://orgmode.org/][org-mode]]
 * Pending basic features
   - [X] spellcheckying
   - [X] active live template
-  - [ ] proper file parsing
+  - [X] keyword/blocs highlight
   - [ ] bold, slant, code highlight
+  - [ ] proper file parsing
   - [ ] folding
   - [ ] tagging
 
