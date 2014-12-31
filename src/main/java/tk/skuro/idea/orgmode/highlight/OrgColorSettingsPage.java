@@ -72,6 +72,7 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
      * @see #SAMPLE_ORG_DOCUMENT
      */
     protected static String loadSampleOrgDocument() {
+        // ¤note: File must have unix style separators: \n
         try {
             return FileUtil.loadTextAndClose(new InputStreamReader(
                     OrgColorSettingsPage.class.getResourceAsStream(SAMPLE_ORG_DOCUMENT_PATH)));
