@@ -25,6 +25,7 @@
                 <p>0.2.0</p>
                 <ul>
                     <li>support spellcheckying</li>
+                    <li>Live templates</li>
                 </ul>
                 <p>0.1.1</p>
                 <ul>
@@ -39,7 +40,8 @@
         <syntaxHighlighter key="OrgMode" implementationClass="tk.skuro.idea.orgmode.highlight.OrgSyntaxHighlighter"/>
         <colorSettingsPage implementation="tk.skuro.idea.orgmode.highlight.OrgColorSettingsPage"/>
         <spellchecker.support language="OrgMode"
-                              implementationClass="tk.skuro.idea.orgmode.utils.OrgSpellcheckingStrategy"/>
+                              implementationClass="tk.skuro.idea.orgmode.editor.OrgSpellcheckingStrategy"/>
+        <defaultLiveTemplatesProvider implementation="tk.skuro.idea.orgmode.editor.OrgLiveTemplatesProvider"/>
 
     </extensions>
 </idea-plugin>

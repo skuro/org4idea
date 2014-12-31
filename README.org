@@ -40,5 +40,4 @@ All files in this repository except OrgMode logos are released under the [[https
 
 
 * Changelog
-
-- 0.2.0 :: add Spellchekying support, maven
+- 0.2.0 :: add Spellchekying support, maven, Live templates

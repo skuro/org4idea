@@ -1,0 +1,81 @@
+<templateSet group="Org">
+    <template name="&lt;s" value="#+BEGIN_SRC $LANG$&#10;  $SELECTION$$END$&#10;#+END_SRC" description="Source block"
+              toReformat="false" toShortenFQNames="true">
+        <variable name="LANG" expression="" defaultValue="" alwaysStopAt="true"/>
+        <context>
+            <option name="OTHER" value="true"/>
+        </context>
+    </template>
+    <template name="&lt;e" value="#+BEGIN_EXAMPLE&#10;  $SELECTION$$END$&#10;#+END_EXAMPLE" description="Example block"
+              toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="OTHER" value="true"/>
+        </context>
+    </template>
+    <template name="&lt;q" value="#+BEGIN_QUOTE&#10;  $SELECTION$$END$&#10;#+END_QUOTE" description="Quote block"
+              toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="OTHER" value="true"/>
+        </context>
+    </template>
+    <template name="&lt;v" value="#+BEGIN_VERSE&#10;  $SELECTION$$END$&#10;#+END_VERSE" description="Quote Verse"
+              toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="OTHER" value="true"/>
+        </context>
+    </template>
+    <template name="&lt;c" value="#+BEGIN_CENTER&#10;  $SELECTION$$END$&#10;#+END_CENTER" description="Center block"
+              toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="OTHER" value="true"/>
+        </context>
+    </template>
+    <template name="&lt;l" value="#+BEGIN_LATEX&#10;  $SELECTION$$END$&#10;#+END_LATER" description="Latex block"
+              toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="OTHER" value="true"/>
+        </context>
+    </template>
+    <template name="&lt;L" value="#+LATEX: $SELECTION$$END$" description="Latex line" toReformat="false"
+              toShortenFQNames="true">
+        <context>
+            <option name="OTHER" value="true"/>
+        </context>
+    </template>
+    <template name="&lt;h" value="#+BEGIN_HTML&#10;  $SELECTION$$END$&#10;#+END_HTML" description="Html block"
+              toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="OTHER" value="true"/>
+        </context>
+    </template>
+    <template name="&lt;H" value="#+HTML: $SELECTION$$END$" description="Html line" toReformat="false"
+              toShortenFQNames="true">
+        <context>
+            <option name="OTHER" value="true"/>
+        </context>
+    </template>
+    <template name="&lt;A" value="#+ASCII: $SELECTION$$END$" description="Ascii line" toReformat="false"
+              toShortenFQNames="true">
+        <context>
+            <option name="OTHER" value="true"/>
+        </context>
+    </template>
+    <template name="&lt;a" value="#+BEGIN_ASCII&#10;  $SELECTION$$END$&#10;#+END_ASCII" description="Ascii block"
+              toReformat="false" toShortenFQNames="true">
+        <context>
+            <option name="OTHER" value="true"/>
+        </context>
+    </template>
+    <template name="&lt;i" value="#+INDEX: $SELECTION$$END$" description="Index Line" toReformat="false"
+              toShortenFQNames="true">
+        <context>
+            <option name="OTHER" value="true"/>
+        </context>
+    </template>
+    <template name="&lt;I" value="#+INCLUDE: $SELECTION$$END$" description="Include Line" toReformat="false"
+              toShortenFQNames="true">
+        <context>
+            <option name="OTHER" value="true"/>
+        </context>
+    </template>
+</templateSet>
