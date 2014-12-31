@@ -1,27 +1,34 @@
 package tk.skuro.idea.orgmode.highlight;
 
-import java.awt.Font;
-
 import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.editor.markup.EffectType;
-import com.intellij.openapi.editor.markup.TextAttributes;
+
+import static com.intellij.openapi.editor.DefaultLanguageHighlighterColors.*;
+import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;
 
 /**
+ *
  * @author Carlo Sciolla
  * @since 0.1
  */
 public interface OrgHighlighterColors {
     // TODO obsolete, replace with new way to do.
 
-    public static final TextAttributesKey COMMENTS_ATTR_KEY = TextAttributesKey.createTextAttributesKey(
-            "ORG.COMMENT", new TextAttributes(null, null, null, null, Font.ITALIC)
-    );
 
-    public static final TextAttributesKey OUTLINE_ATTR_KEY = TextAttributesKey.createTextAttributesKey(
-            "ORG.OUTLINE", new TextAttributes(null, null, null, null, Font.BOLD)
-    );
+    /**
+     * Default style for outline
+     */
+    // TODO: different style for outline levels
+    public static final TextAttributesKey OUTLINE_ATTR_KEY = createTextAttributesKey("ORG.OUTLINE", KEYWORD);
 
-    public static final TextAttributesKey UNDERLINE_ATTR_KEY = TextAttributesKey.createTextAttributesKey(
-            "ORG.UNDERLINE", new TextAttributes(null, null, null, EffectType.LINE_UNDERSCORE, Font.PLAIN)
-    );
+    /**
+     * Default style of comments
+     */
+    public static final TextAttributesKey COMMENTS_ATTR_KEY = createTextAttributesKey("ORG.COMMENT", LINE_COMMENT);
+
+    /**
+     * Default style of underline text
+     */
+    public static final TextAttributesKey UNDERLINE_ATTR_KEY = createTextAttributesKey("ORG.UNDERLINE", STRING);
+
+
 }
