@@ -41,6 +41,8 @@
         <colorSettingsPage implementation="tk.skuro.idea.orgmode.highlight.OrgColorSettingsPage"/>
         <spellchecker.support language="OrgMode"
                               implementationClass="tk.skuro.idea.orgmode.editor.OrgSpellcheckingStrategy"/>
+
+        <liveTemplateContext implementation="tk.skuro.idea.orgmode.editor.OrgContextType"/>
         <defaultLiveTemplatesProvider implementation="tk.skuro.idea.orgmode.editor.OrgLiveTemplatesProvider"/>
 
     </extensions>
