@@ -28,6 +28,8 @@ public class OrgSyntaxHighlighter extends SyntaxHighlighterBase {
         fillMap(ATTRIBUTES, OrgTokenTypes.OUTLINES, OrgHighlighterColors.OUTLINE_ATTR_KEY);
         fillMap(ATTRIBUTES, OrgTokenTypes.UNDERLINES, OrgHighlighterColors.UNDERLINE_ATTR_KEY);
         fillMap(ATTRIBUTES, OrgTokenTypes.KEYWORDS, OrgHighlighterColors.KEYWORD_ATTR_KEY);
+        fillMap(ATTRIBUTES, OrgTokenTypes.CODES, OrgHighlighterColors.CODE_ATTR_KEY);
+
     }
 
     @NotNull

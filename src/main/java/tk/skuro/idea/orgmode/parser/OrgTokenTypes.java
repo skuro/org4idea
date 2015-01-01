@@ -11,6 +11,7 @@ import com.intellij.psi.tree.TokenSet;
  * @since 0.1
  */
 public interface OrgTokenTypes {
+    // TODO: package rego
     // maybe make a single declaration
 
     public final static IElementType WHITE_SPACE = TokenType.WHITE_SPACE;
@@ -20,6 +21,7 @@ public interface OrgTokenTypes {
     public final static IElementType OUTLINE = new OrgElementType("ORG_OUTLINE");
     public final static IElementType TEXT = new OrgElementType("ORG_TEXT");
     public final static IElementType BOLD = new OrgElementType("ORG_BOLD");
+    public final static IElementType CODE = new OrgElementType("ORG_CODE");
     public final static IElementType ITALIC = new OrgElementType("ORG_ITALIC");
     public final static IElementType UNDERLINE = new OrgElementType("ORG_UNDERLINE");
 
@@ -28,5 +30,5 @@ public interface OrgTokenTypes {
     public final static TokenSet OUTLINES = TokenSet.create(OUTLINE);
     public final static TokenSet KEYWORDS = TokenSet.create(KEYWORD);
     public final static TokenSet UNDERLINES = TokenSet.create(UNDERLINE);
-
+    public final static TokenSet CODES = TokenSet.create(CODE);
 }

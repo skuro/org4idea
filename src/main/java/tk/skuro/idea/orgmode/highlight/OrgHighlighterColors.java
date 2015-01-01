@@ -28,6 +28,10 @@ public interface OrgHighlighterColors {
      */
     public static final TextAttributesKey KEYWORD_ATTR_KEY = createTextAttributesKey("ORG.KEYWORD", LINE_COMMENT);
 
+    /**
+     * Default style of code {@code #+TITLE}
+     */
+    public static final TextAttributesKey CODE_ATTR_KEY = createTextAttributesKey("ORG.CODE", TEMPLATE_LANGUAGE_COLOR);
 
     /**
      * Default style of Bold text

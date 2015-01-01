@@ -44,6 +44,7 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
     public OrgColorSettingsPage() {
         // Populate attribute descriptors.
 
+        // TODO refactor extract static util function + static import!
         attributeDescriptors.add(new AttributesDescriptor(
                         MessageBundle.message("org.editor.colorsettingspage.keyword"),
                         OrgHighlighterColors.KEYWORD_ATTR_KEY)
@@ -60,7 +61,10 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
                 MessageBundle.message("org.editor.colorsettingspage.underline"),
                 OrgHighlighterColors.UNDERLINE_ATTR_KEY)
         );
-        // maybe: extract static util function
+        attributeDescriptors.add(new AttributesDescriptor(
+                        MessageBundle.message("org.editor.colorsettingspage.code"),
+                        OrgHighlighterColors.CODE_ATTR_KEY)
+        );
     }
 
     /**
