@@ -1,17 +1,5 @@
 package tk.skuro.idea.orgmode.highlight;
 
-import tk.skuro.idea.orgmode.MessageBundle;
-import tk.skuro.idea.orgmode.OrgIcons;
-
-import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
-import javax.swing.Icon;
-
-import org.jetbrains.annotations.NotNull;
-
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
@@ -19,6 +7,17 @@ import com.intellij.openapi.options.colors.AttributesDescriptor;
 import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.openapi.options.colors.ColorSettingsPage;
 import com.intellij.openapi.util.io.FileUtil;
+import org.jetbrains.annotations.NotNull;
+import tk.skuro.idea.orgmode.MessageBundle;
+import tk.skuro.idea.orgmode.OrgIcons;
+
+import javax.swing.*;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+import static tk.skuro.idea.orgmode.highlight.OrgHighlighterColors.*;
 
 /**
  * Configuration for the color font page of Org language
@@ -43,28 +42,12 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
 
     public OrgColorSettingsPage() {
         // Populate attribute descriptors.
-
-        // TODO refactor extract static util function + static import!
-        attributeDescriptors.add(new AttributesDescriptor(
-                        MessageBundle.message("org.editor.colorsettingspage.keyword"),
-                        OrgHighlighterColors.KEYWORD_ATTR_KEY)
+        addAttribute("org.editor.colorsettingspage.keyword", KEYWORD_ATTR_KEY);
+        addAttribute("org.editor.colorsettingspage.comment", COMMENTS_ATTR_KEY
         );
-        attributeDescriptors.add(new AttributesDescriptor(
-                MessageBundle.message("org.editor.colorsettingspage.comment"),
-                OrgHighlighterColors.COMMENTS_ATTR_KEY)
-        );
-        attributeDescriptors.add(new AttributesDescriptor(
-                MessageBundle.message("org.editor.colorsettingspage.outline"),
-                OrgHighlighterColors.OUTLINE_ATTR_KEY)
-        );
-        attributeDescriptors.add(new AttributesDescriptor(
-                MessageBundle.message("org.editor.colorsettingspage.underline"),
-                OrgHighlighterColors.UNDERLINE_ATTR_KEY)
-        );
-        attributeDescriptors.add(new AttributesDescriptor(
-                        MessageBundle.message("org.editor.colorsettingspage.code"),
-                        OrgHighlighterColors.CODE_ATTR_KEY)
-        );
+        addAttribute("org.editor.colorsettingspage.outline", OUTLINE_ATTR_KEY);
+        addAttribute("org.editor.colorsettingspage.underline", UNDERLINE_ATTR_KEY);
+        addAttribute("org.editor.colorsettingspage.code", CODE_ATTR_KEY);
     }
 
     /**
@@ -84,6 +67,18 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
             LOGGER.error("Failed loading sample Org document", e);
         }
         return MessageBundle.message("org.editor.colorsettingspage.sample-loading-error");
+    }
+
+    /**
+     * Util factorising method to add attribute in a more succint dry way
+     *
+     * @param name              the key of the message bundle for the name of attribut
+     * @param textAttributesKey the attribute key to bind
+     * @return whether the attribute was adde or not
+     */
+    private boolean addAttribute(String name, TextAttributesKey textAttributesKey) {
+        return attributeDescriptors.add(
+                new AttributesDescriptor(MessageBundle.message(name), textAttributesKey));
     }
 
     @Override
