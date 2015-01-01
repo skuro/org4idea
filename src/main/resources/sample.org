@@ -1,7 +1,14 @@
 #+TITLE: Org samples
 
-# Comment
+# This is not a Comment
 
-* outline1
-** outline2
-text _underline_ [[http://skuro.tk][link]]
+* outline 1
+** outline 2
+This text is _underlined_ while this one is *bold*
+
+This is a yet _unsupported_ [[http://orgmode.org/][link]]
+
+: This will be a line of code
+
+
+# TODO: Date, drawer, and many others!
