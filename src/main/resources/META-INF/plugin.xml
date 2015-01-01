@@ -27,7 +27,9 @@
                     <li>support spellcheckying</li>
                     <li>live templates</li>
                     <li>support todo indexing</li>
-                    <li> keyword/blocs highlighting</li>
+                    <li>keyword/blocs highlighting</li>
+                    <li>code highlighting</li>
+                    <li>commenter</li>
                 </ul>
                 <p>0.1.1</p>
                 <ul>

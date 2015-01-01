@@ -13,6 +13,7 @@ This plugin provides basic editing support for [[http://orgmode.org/][org-mode]]
   - [X] spellcheckying
   - [X] active live template
   - [X] keyword/blocs highlight
+  - [X] Commenter
   - [ ] bold, slant, code highlight
   - [ ] proper file parsing
   - [ ] folding
@@ -20,17 +21,18 @@ This plugin provides basic editing support for [[http://orgmode.org/][org-mode]]
 
 * Building from source
 - setup :: Open the module setting and select /Intellij IDEA Plugin SDK/ as project SDK
-- run/test : Use /Run Configuration/ to run the plugin and tests
+- run/test :: Use /Run Configuration/ to run the plugin and tests
   # when there will be some
 - release :: /Build > Prepare plugin for deployment/ to generate the release package.
 # inspiration from idea-markdown
-Ensure that *Plugin DevKit* is activated (=Settings | Plugins=)
+Ensure that *Plugin DevKit* is activated (=Settings | Plugins=). You might also need the =JFlex= support if you are considering tweaking the lexing rules
 
 # §TODO: see https://github.com/rholder/gradle-view to have inspired gradle build
 * Credits
 
 Project author: [[http://skuro.tk][Carlo Sciolla]]
-contributor: Adriean Khisbe
+
+Contributor: [[https://github.com/AdrieanKhisbe/org4idea][Adriean Khisbe]]
 
 # §todo: add paragraph about contribution
 
@@ -40,4 +42,5 @@ All files in this repository except OrgMode logos are released under the [[https
 
 
 * Changelog
-- 0.2.0 :: add Spellchekying support, maven structure, Live templates
+- 0.2.0 :: Many new features:
+     add Spellchekying support, maven structure, Live templates, Commenter, Todo Indexing
