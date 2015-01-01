@@ -26,17 +26,19 @@ KEYWORD=[\ \t]*"#+"[^\r\n]+
 UNDERLINE = "_" .* "_"
 // see markdown, and replicate for bold verbatim and else
 OUTLINE = [*]+ [\ \t\f]+ [^\r\n]*
-// see how to couount the number of star
+// see how to count the number of star: maybe yytext()
 
 CODELINE = [\ \t]*": "[^\r\n]*
 
 %% /** Lexing Rules */
 
-<YYINITIAL> ^{COMMENT}       { yybegin(YYINITIAL); return COMMENT; }
-<YYINITIAL> ^{OUTLINE}        { yybegin(YYINITIAL); return OUTLINE; }
-<YYINITIAL> ^{KEYWORD}        { yybegin(YYINITIAL); return KEYWORD; }
-<YYINITIAL> ^{CODELINE}           { yybegin(YYINITIAL); return CODE; }
+<YYINITIAL> {
+    ^{OUTLINE}        { yybegin(YYINITIAL); return OUTLINE; }
+    ^{COMMENT}        { yybegin(YYINITIAL); return COMMENT; }
+    ^{KEYWORD}        { yybegin(YYINITIAL); return KEYWORD; }
+    ^{CODELINE}       { yybegin(YYINITIAL); return CODE; }
+}
 
-{WHITE_SPACE_CHAR}+                      { return WHITE_SPACE; }
-{UNDERLINE}                              { return UNDERLINE; }
-.                                        { return BAD_CHARACTER; }
+{WHITE_SPACE_CHAR}+   { return WHITE_SPACE; }
+{UNDERLINE}           { return UNDERLINE; } // Mayeb move in initial block?
+.                     { return BAD_CHARACTER; }
