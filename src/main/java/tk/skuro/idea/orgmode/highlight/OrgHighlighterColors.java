@@ -29,9 +29,21 @@ public interface OrgHighlighterColors {
     public static final TextAttributesKey KEYWORD_ATTR_KEY = createTextAttributesKey("ORG.KEYWORD", LINE_COMMENT);
 
     /**
-     * Default style of code {@code #+TITLE}
+     * Default style of block delimiter
+     */
+    public static final TextAttributesKey BLOCK_DELIM_ATTR_KEY = createTextAttributesKey("ORG.BLOCK_DELIMITER",
+            KEYWORD_ATTR_KEY);
+
+    /**
+     * Default style of code
      */
     public static final TextAttributesKey CODE_ATTR_KEY = createTextAttributesKey("ORG.CODE", TEMPLATE_LANGUAGE_COLOR);
+
+    /**
+     * Default style of block content
+     */
+    public static final TextAttributesKey BLOCK_CONTENT_ATTR_KEY = createTextAttributesKey("ORG.BLOCK_CONTENT",
+            CODE_ATTR_KEY);
 
     /**
      * Default style of Bold text

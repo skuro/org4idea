@@ -40,14 +40,14 @@ BLOCK_END= [\ \t]*"#+END_"[^\r\n\ ]+[^\r\n]*
 <YYINITIAL> {
     ^{OUTLINE}        { yybegin(YYINITIAL); return OUTLINE; }
     ^{COMMENT}        { yybegin(YYINITIAL); return COMMENT; }
-    ^{BLOCK_START}    { yybegin(BLOCK); return KEYWORD; }
+    ^{BLOCK_START}    { yybegin(BLOCK); return BLOCK_DELIMITER; }
     ^{KEYWORD}        { yybegin(YYINITIAL); return KEYWORD; }
     ^{CODELINE}       { yybegin(YYINITIAL); return CODE; }
       }
 
 <BLOCK> {
-    ^{BLOCK_END}      { yybegin(YYINITIAL); return KEYWORD; }
-    .                 { return CODE; }
+    ^{BLOCK_END}      { yybegin(YYINITIAL); return BLOCK_DELIMITER; }
+    .                 { return BLOCK_CONTENT; }
 }
 
 {WHITE_SPACE_CHAR}+   { return WHITE_SPACE; }

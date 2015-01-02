@@ -29,7 +29,9 @@ public class OrgSyntaxHighlighter extends SyntaxHighlighterBase {
         fillMap(ATTRIBUTES, OrgTokenTypes.UNDERLINES, OrgHighlighterColors.UNDERLINE_ATTR_KEY);
         fillMap(ATTRIBUTES, OrgTokenTypes.KEYWORDS, OrgHighlighterColors.KEYWORD_ATTR_KEY);
         fillMap(ATTRIBUTES, OrgTokenTypes.CODES, OrgHighlighterColors.CODE_ATTR_KEY);
-
+        fillMap(ATTRIBUTES, OrgTokenTypes.BLOCK_CONTENTS, OrgHighlighterColors.BLOCK_CONTENT_ATTR_KEY);
+        fillMap(ATTRIBUTES, OrgTokenTypes.BLOCK_DELIMITERS, OrgHighlighterColors.BLOCK_DELIM_ATTR_KEY);
+        // maybe refactor with static import
     }
 
     @NotNull
