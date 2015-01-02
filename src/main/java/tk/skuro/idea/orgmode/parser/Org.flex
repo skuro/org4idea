@@ -17,6 +17,8 @@ import static tk.skuro.idea.orgmode.parser.OrgTokenTypes.*;
 %eof}
 %type IElementType
 
+%state BLOCK
+
 /** Classes definitions */
 WHITE_SPACE_CHAR = [\ \t\f\n\r]
 COMMENT =[\ \t]*"# "[^\r\n]*
@@ -30,15 +32,24 @@ OUTLINE = [*]+ [\ \t\f]+ [^\r\n]*
 
 CODELINE = [\ \t]*": "[^\r\n]*
 
+BLOCK_START= [\ \t]*"#+BEGIN_"[^\r\n\ ]+[^\r\n]*
+BLOCK_END= [\ \t]*"#+END_"[^\r\n\ ]+[^\r\n]*
+
 %% /** Lexing Rules */
 
 <YYINITIAL> {
     ^{OUTLINE}        { yybegin(YYINITIAL); return OUTLINE; }
     ^{COMMENT}        { yybegin(YYINITIAL); return COMMENT; }
+    ^{BLOCK_START}    { yybegin(BLOCK); return KEYWORD; }
     ^{KEYWORD}        { yybegin(YYINITIAL); return KEYWORD; }
     ^{CODELINE}       { yybegin(YYINITIAL); return CODE; }
+      }
+
+<BLOCK> {
+    ^{BLOCK_END}      { yybegin(YYINITIAL); return KEYWORD; }
+    .                 { return CODE; }
 }
 
 {WHITE_SPACE_CHAR}+   { return WHITE_SPACE; }
-{UNDERLINE}           { return UNDERLINE; } // Mayeb move in initial block?
+{UNDERLINE}           { return UNDERLINE; } // Maybe move in initial block?
 .                     { return BAD_CHARACTER; }
