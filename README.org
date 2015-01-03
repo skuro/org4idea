@@ -1,7 +1,6 @@
 #+TITLE: org4idea: edit org-mode files from IntelliJ
 
-[[https://raw.github.com/skuro/org4idea/master/media/screenshot.png]]
-# Todo: update
+[[media/screenshot_new.png]]
 
 * Introduction
 
@@ -9,7 +8,7 @@ This plugin provides basic editing support for [[http://orgmode.org/][org-mode]]
 
  At the moment, only  support for syntax highlight of comments and outlines is provided.
 
-*org4idea* is still in its inception / pre-alpha / here-be-dragons phase. Use at your own risk.
+*org4idea* is still in its /inception / pre-alpha / here-be-dragons phase/. Use at your own risk.
 
 * Pending basic features
 ** Basic Editing
@@ -28,7 +27,7 @@ These feature only requires some Intellij customisation of the plugin, and basic
   - [ ] folding
   - [ ] tagging
 
-** Miscaelenious
+** Miscellaneous
 - create new org file
 - capture like actions
 - Link support
@@ -48,7 +47,7 @@ Ensure that *Plugin DevKit* is activated (=Settings | Plugins=). You might also 
 * Credits
 
 - Project author :: [[http://skuro.tk][Carlo Sciolla]]
-- Contributor : [[https://github.com/AdrieanKhisbe/org4idea][Adriean Khisbe]]
+- Contributor :: [[https://github.com/AdrieanKhisbe/org4idea][Adriean Khisbe]]
 
 # §todo: add paragraph about how to contribute?
 
