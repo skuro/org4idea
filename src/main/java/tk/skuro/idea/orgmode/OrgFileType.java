@@ -29,7 +29,7 @@ public class OrgFileType extends LanguageFileType {
     @NotNull
     @Override
     public String getDescription() {
-        return MessageBundle.message("org.file.type.description");
+        return OrgBundle.message("org.file.type.description");
     }
 
     @NotNull

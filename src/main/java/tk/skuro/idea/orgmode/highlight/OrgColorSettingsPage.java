@@ -8,7 +8,7 @@ import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.openapi.options.colors.ColorSettingsPage;
 import com.intellij.openapi.util.io.FileUtil;
 import org.jetbrains.annotations.NotNull;
-import tk.skuro.idea.orgmode.MessageBundle;
+import tk.skuro.idea.orgmode.OrgBundle;
 import tk.skuro.idea.orgmode.OrgIcons;
 
 import javax.swing.*;
@@ -68,7 +68,7 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
         } catch (Exception e) {
             LOGGER.error("Failed loading sample Org document", e);
         }
-        return MessageBundle.message("org.editor.colorsettingspage.sample-loading-error");
+        return OrgBundle.message("org.editor.colorsettingspage.sample-loading-error");
     }
 
     /**
@@ -80,7 +80,7 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
      */
     private boolean addAttribute(String name, TextAttributesKey textAttributesKey) {
         return attributeDescriptors.add(
-                new AttributesDescriptor(MessageBundle.message(name), textAttributesKey));
+                new AttributesDescriptor(OrgBundle.message(name), textAttributesKey));
     }
 
     @Override
@@ -120,6 +120,6 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
     @NotNull
     @Override
     public String getDisplayName() {
-        return MessageBundle.message("org.file.type");
+        return OrgBundle.message("org.file.type");
     }
 }
