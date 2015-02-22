@@ -54,9 +54,3 @@ Ensure that *Plugin DevKit* is activated (=Settings | Plugins=). You might also 
 * License
 
 All files in this repository except OrgMode logos are released under the [[https://github.com/skuro/org4idea/blob/master/LICENSE.txt][MIT license]].
-
-
-* Changelog
-+ 0.2.0 :: Many new features:
-   - add Spellchekying support, maven structure, Live templates, Commenter, Todo Indexing
-   - Better highlighting and color options
