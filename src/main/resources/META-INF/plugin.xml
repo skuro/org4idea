@@ -1,0 +1,60 @@
+<idea-plugin version="2">
+    <name>Org4Idea</name>
+    <description>An OrgMode editor for IntelliJ IDEA</description>
+    <category>Custom Languages</category>
+    <version>0.2.0</version>
+    <vendor email="skuro@skuro.tk" url="http://skuro.tk">Carlo Sciolla</vendor>
+    <depends>com.intellij.modules.lang</depends>
+
+    <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="107.105"/>
+
+    <description>
+        <![CDATA[
+        Idea plugin to edit <a href="http://orgmode.org/">OrgMode</a> files
+        <ul>
+            <li> supports basic outline and comments</li>
+            <li> supports spell checkying</li>
+        </ul>
+
+        More features on the go!
+        ]]>
+    </description>
+    <change-notes>
+        <![CDATA[
+            <p>0.2.0</p>
+                <ul>
+                    <li>support spellcheckying</li>
+                    <li>live templates</li>
+                    <li>support todo indexing</li>
+                    <li>keyword/blocs highlighting</li>
+                    <li>code highlighting</li>
+                    <li>commenter</li>
+                </ul>
+                <p>0.1.1</p>
+                <ul>
+                    <li>support underline text</li>
+                </ul>
+       ]]>
+    </change-notes>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileTypeFactory implementation="tk.skuro.idea.orgmode.OrgFileTypeFactory" />
+        <lang.parserDefinition language="OrgMode" implementationClass="tk.skuro.idea.orgmode.parser.OrgParserDefinition"/>
+
+        <syntaxHighlighter key="OrgMode" implementationClass="tk.skuro.idea.orgmode.highlight.OrgSyntaxHighlighter"/>
+        <colorSettingsPage implementation="tk.skuro.idea.orgmode.highlight.OrgColorSettingsPage"/>
+
+        <spellchecker.support language="OrgMode"
+                              implementationClass="tk.skuro.idea.orgmode.editor.OrgSpellcheckingStrategy"/>
+
+        <lang.commenter language="OrgMode" implementationClass="tk.skuro.idea.orgmode.editor.OrgCommenter"/>
+
+        <liveTemplateContext implementation="tk.skuro.idea.orgmode.editor.OrgContextType"/>
+        <defaultLiveTemplatesProvider implementation="tk.skuro.idea.orgmode.editor.OrgLiveTemplatesProvider"/>
+
+        <todoIndexer filetype="OrgMode"
+                     implementationClass="tk.skuro.idea.orgmode.editor.indexer.OrgTodoIndexer"/>
+
+    </extensions>
+</idea-plugin>

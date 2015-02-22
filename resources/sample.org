@@ -1,5 +1,0 @@
-# Comment
-
-* outline1
-** outline2
-text _underline_ [[http://skuro.tk][link]]

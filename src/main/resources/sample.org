@@ -1,0 +1,19 @@
+#+TITLE: Org samples
+
+# This is not a Comment
+
+* outline 1
+
+** outline 2
+This text is _underlined_ while this one is *bold*
+
+This is a yet _unsupported_ [[http://orgmode.org/][link]]
+
+: This will be a line of code
+
+Here is some block
+#+BEGIN_SRC ruby
+  p "This is some code"
+#+END_SRC
+
+# TODO: Date, drawer, and many others!
