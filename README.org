@@ -4,13 +4,11 @@
 
 * Introduction
 
-This plugin provides basic editing support for [[http://orgmode.org/][org-mode]] files in IntelliJ.
+This plugin provides basic editing support for [[http://orgmode.org/][org-mode]] files in IntelliJ. At the moment, only  support for syntax highlight of comments and outlines is provided.
 
- At the moment, only  support for syntax highlight of comments and outlines is provided.
+_DISCLAIMER_: *org4idea* is still in its /inception / pre-alpha / here-be-dragons phase/. Use at your own risk.
 
-*org4idea* is still in its /inception / pre-alpha / here-be-dragons phase/. Use at your own risk.
-
-* Pending basic features
+* Status and planned features
 ** Basic Editing
 These feature only requires some Intellij customisation of the plugin, and basic lexing rules
 
@@ -28,22 +26,13 @@ These feature only requires some Intellij customisation of the plugin, and basic
   - [ ] tagging
 
 ** Miscellaneous
-- create new org file
-- capture like actions
-- Link support
-- Export and html preview (relying on a background emacs)
-- the one you might suggest or implement
-- Line marker
+- [ ] create new org file
+- [ ] capture like actions
+- [ ] Link support
+- [ ] Export and html preview (relying on a background emacs)
+- [ ] the one you might [[https://github.com/skuro/org4idea/issues][suggest or implement]]
+- [ ] Line marker
 
-* Building from source
-- setup :: Open the module setting and select /Intellij IDEA Plugin SDK/ as project SDK
-- run/test :: Use /Run Configuration/ to run the plugin and tests
-  # when there will be some
-- release :: /Build > Prepare plugin for deployment/ to generate the release package.
-# inspiration from idea-markdown
-Ensure that *Plugin DevKit* is activated (=Settings | Plugins=). You might also need the =JFlex= support if you are considering tweaking the lexing rules
-
-# §TODO: see https://github.com/rholder/gradle-view to have inspired gradle build
 * Credits
 
 - Project author :: [[http://skuro.tk][Carlo Sciolla]]
@@ -53,4 +42,4 @@ Ensure that *Plugin DevKit* is activated (=Settings | Plugins=). You might also 
 
 * License
 
-All files in this repository except OrgMode logos are released under the [[https://github.com/skuro/org4idea/blob/master/LICENSE.txt][MIT license]].
+All files in this repository except OrgMode logos are released under the [[LICENSE.txt][MIT License]].
