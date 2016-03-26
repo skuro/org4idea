@@ -2,6 +2,7 @@ package tk.skuro.idea.orgmode.parser;
 
 import com.intellij.lexer.LexerPosition;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -81,6 +82,25 @@ public class LexerTest {
 
         lexer.start(keyword);
         assertEquals("Keyword not properly parsed", OrgTokenTypes.KEYWORD, lexer.getTokenType());
+    }
+
+    @Test
+    public void canReadUnderline(){
+        final String underlined = "_Ima underline text_";
+
+        lexer.start(underlined);
+        assertEquals("Underline not properly parsed", OrgTokenTypes.UNDERLINE, lexer.getTokenType());
+        assertEquals("Underline not properly parsed", underlined, lexer.getTokenText());
+    }
+
+    @Ignore("Still need to regenerate the lexer")
+    @Test
+    public void canReadBold(){
+        final String underlined = "*Ima bold text*";
+
+        lexer.start(underlined);
+        assertEquals("Underline not properly parsed", OrgTokenTypes.UNDERLINE, lexer.getTokenType());
+        assertEquals("Underline not properly parsed", underlined, lexer.getTokenText());
     }
 
     private void eatWhitespace() {

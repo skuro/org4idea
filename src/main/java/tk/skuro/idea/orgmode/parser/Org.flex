@@ -27,6 +27,7 @@ COMMENT =[\ \t]*"# "[^\r\n]*
 KEYWORD=[\ \t]*"#+"[^\r\n]+
 
 UNDERLINE = "_" .* "_"
+BOLD = "*" .* "*"
 // see markdown, and replicate for bold verbatim and else
 OUTLINE = [*]+ [\ \t\f]+ [^\r\n]*
 // see how to count the number of star: maybe yytext()
