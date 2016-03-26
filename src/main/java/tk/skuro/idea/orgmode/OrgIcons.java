@@ -8,5 +8,5 @@ import com.intellij.openapi.util.IconLoader;
  * @author Carlo Sciolla
  */
 public interface OrgIcons {
-    static final Icon ORG_ICON = IconLoader.getIcon("/org/fileType.png");
+    Icon ORG_ICON = IconLoader.getIcon("/org/fileType.png");
 }

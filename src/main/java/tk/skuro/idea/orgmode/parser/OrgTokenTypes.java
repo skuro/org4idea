@@ -11,8 +11,6 @@ import com.intellij.psi.tree.TokenSet;
  * @since 0.1
  */
 public interface OrgTokenTypes {
-    // TODO: package rego
-    // maybe make a single declaration
 
     IElementType WHITE_SPACE = TokenType.WHITE_SPACE;
     IElementType BAD_CHARACTER = TokenType.BAD_CHARACTER;

@@ -1,5 +1,5 @@
 /**
- * {@code TO DO} tracking for Orgmode.
+ * {@code TODO} tracking for Orgmode.
  *
  * inspired from Markdown and Xml Idea Plugins
  *
