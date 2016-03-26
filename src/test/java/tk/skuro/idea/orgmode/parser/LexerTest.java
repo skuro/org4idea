@@ -23,6 +23,14 @@ public class LexerTest {
     }
 
     @Test
+    public void canReadCommentsWithHeadingWhitespaces() {
+        final String comment = "  # I'm a comment";
+        lexer.start(comment);
+
+        assertEquals("Comment not properly parsed", OrgTokenTypes.COMMENT, lexer.getTokenType());
+    }
+
+    @Test
     public void canReadOutlines() {
         final String outlines =
                 "* I'm an outline\n" +

@@ -22,6 +22,7 @@ import static tk.skuro.idea.orgmode.parser.OrgTokenTypes.*;
 /** Classes definitions */
 WHITE_SPACE_CHAR = [\ \t\f\n\r]
 COMMENT =[\ \t]*"# "[^\r\n]*
+
 // FIXME Leading whitespace not working...
 KEYWORD=[\ \t]*"#+"[^\r\n]+
 
