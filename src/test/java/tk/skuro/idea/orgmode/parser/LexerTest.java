@@ -65,6 +65,22 @@ public class LexerTest {
         assertEquals("Block end not properly parsed", OrgTokenTypes.BLOCK_DELIMITER, lexer.getTokenType());
     }
 
+    @Test
+    public void canReadKeyword(){
+        final String keyword = "#+FOOBAR: foobar all the way down";
+
+        lexer.start(keyword);
+        assertEquals("Keyword not properly parsed", OrgTokenTypes.KEYWORD, lexer.getTokenType());
+    }
+
+    @Test
+    public void canReadKeywordWithHeadingWhitespace(){
+        final String keyword = "   #+FOOBAR: foobar all the way down";
+
+        lexer.start(keyword);
+        assertEquals("Keyword not properly parsed", OrgTokenTypes.KEYWORD, lexer.getTokenType());
+    }
+
     private void eatWhitespace() {
         lexer.advance();
     }
