@@ -1,5 +1,6 @@
 package tk.skuro.idea.orgmode.parser;
 
+import com.intellij.lexer.LexerPosition;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -60,6 +61,7 @@ public class LexerTest {
         assertEquals("Block content not properly parsed", OrgTokenTypes.BLOCK_CONTENT, lexer.getTokenType());
 
         eatBlockCharacters();
+        eatWhitespace();
 
         lexer.advance();
         assertEquals("Block end not properly parsed", OrgTokenTypes.BLOCK_DELIMITER, lexer.getTokenType());
@@ -86,12 +88,16 @@ public class LexerTest {
     }
 
     /**
-     * Eats all characters inside a block, including one trailing whitespace
+     * Eats all characters inside a block
      */
     private void eatBlockCharacters() {
+        LexerPosition previous = lexer.getCurrentPosition();
         while(lexer.getTokenType() == OrgTokenTypes.BLOCK_CONTENT) {
+            previous = lexer.getCurrentPosition();
             lexer.advance();
         }
+
+        lexer.restore(previous); // do not eat the trailing token after the block content
     }
 
 }
