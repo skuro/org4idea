@@ -19,7 +19,7 @@ public interface OrgTokenTypes {
     IElementType KEYWORD = new OrgElementType("ORG_KEYWORD");
     IElementType COMMENT = new OrgElementType("ORG_COMMENT");
     IElementType OUTLINE = new OrgElementType("ORG_OUTLINE");
-    IElementType BLOCK_DELIMITER = new OrgElementType("ORG_BLOCK_DELIMITEr");
+    IElementType BLOCK_DELIMITER = new OrgElementType("ORG_BLOCK_DELIMITER");
     IElementType BLOCK_CONTENT = new OrgElementType("ORG_BLOCK_CONTENT");
     IElementType TEXT = new OrgElementType("ORG_TEXT");
     IElementType BOLD = new OrgElementType("ORG_BOLD");
