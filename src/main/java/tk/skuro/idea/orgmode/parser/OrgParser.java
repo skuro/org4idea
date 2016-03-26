@@ -15,7 +15,7 @@ public class OrgParser implements PsiParser {
 
     @NotNull
     @Override
-    public ASTNode parse(IElementType iElementType, PsiBuilder builder) {
+    public ASTNode parse(final @NotNull IElementType iElementType, final @NotNull PsiBuilder builder) {
 
         PsiBuilder.Marker rootMarker = builder.mark();
 
