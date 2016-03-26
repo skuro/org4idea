@@ -12,11 +12,10 @@ _DISCLAIMER_: *org4idea* is still in its /inception / pre-alpha / here-be-dragon
 ** Basic Editing
 These feature only requires some Intellij customisation of the plugin, and basic lexing rules
 
-  - [X] spellcheckying
+  - [X] spellchecking
   - [X] active live template
-  - [X] keyword/blocs highlight
-  - [X] Commenter
-  - [X] Highligting of blocs, and keywords
+  - [X] Keywords/blocks highlight
+  - [X] Comments
   - [ ] bold, slant, code highlight
 
 ** Structure aware features
