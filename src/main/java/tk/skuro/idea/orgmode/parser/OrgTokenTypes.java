@@ -27,6 +27,9 @@ public interface OrgTokenTypes {
     IElementType DRAWER_DELIMITER = new OrgElementType("ORG_DRAWER_DELIMITER");
     IElementType DRAWER_CONTENT = new OrgElementType("ORG_DRAWER_CONTENT");
 
+    // Block elements
+    IElementType BLOCK = new OrgElementType("ORG_BLOCK");
+
     // see: tokenset from element
     TokenSet WHITESPACES = TokenSet.create(WHITE_SPACE);
     TokenSet COMMENTS = TokenSet.create(COMMENT);

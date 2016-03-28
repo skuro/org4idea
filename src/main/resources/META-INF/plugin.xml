@@ -2,7 +2,7 @@
     <name>Org4Idea</name>
     <description>An OrgMode editor for IntelliJ IDEA</description>
     <category>Custom Languages</category>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
     <vendor email="skuro@skuro.tk" url="http://skuro.tk">Carlo Sciolla</vendor>
     <depends>com.intellij.modules.lang</depends>
 
@@ -49,6 +49,7 @@
                               implementationClass="tk.skuro.idea.orgmode.editor.OrgSpellcheckingStrategy"/>
 
         <lang.commenter language="OrgMode" implementationClass="tk.skuro.idea.orgmode.editor.OrgCommenter"/>
+        <lang.foldingBuilder language="OrgMode" implementationClass="tk.skuro.idea.orgmode.editor.folding.OrgFoldingBuilder"/>
 
         <liveTemplateContext implementation="tk.skuro.idea.orgmode.editor.OrgContextType"/>
         <defaultLiveTemplatesProvider implementation="tk.skuro.idea.orgmode.editor.OrgLiveTemplatesProvider"/>
