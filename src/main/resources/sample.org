@@ -7,7 +7,7 @@
 ** outline 2
 This text is _underlined_ while this one is *bold*
 
-This is a yet _unsupported_ [[http://orgmode.org/][link]]
+Links are _unsupported_ at the moment: [[http://orgmode.org/][link]]
 
 : This will be a line of code
 

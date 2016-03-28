@@ -47,6 +47,7 @@ public class OrgColorSettingsPage implements ColorSettingsPage {
         );
         addAttribute("org.editor.colorsettingspage.outline", OUTLINE_ATTR_KEY);
         addAttribute("org.editor.colorsettingspage.underline", UNDERLINE_ATTR_KEY);
+        addAttribute("org.editor.colorsettingspage.bold", BOLD_ATTR_KEY);
         addAttribute("org.editor.colorsettingspage.code", CODE_ATTR_KEY);
         addAttribute("org.editor.colorsettingspage.block.delimiter", BLOCK_DELIM_ATTR_KEY);
         addAttribute("org.editor.colorsettingspage.block.content", BLOCK_CONTENT_ATTR_KEY);
