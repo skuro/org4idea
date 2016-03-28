@@ -64,4 +64,4 @@ PROPERTIES_END=[\ \t]*":END:"
 {WHITE_SPACE_CHAR}+   { return WHITE_SPACE; }
 {UNDERLINE}           { return UNDERLINE; } // Maybe move in initial block?
 {BOLD}                { return BOLD; } // Maybe move in initial block?
-.                     { return BAD_CHARACTER; }
+.                     { return TEXT; }

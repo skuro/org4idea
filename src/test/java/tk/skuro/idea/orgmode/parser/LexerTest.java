@@ -1,9 +1,12 @@
 package tk.skuro.idea.orgmode.parser;
 
-import com.intellij.lexer.LexerPosition;
 import com.intellij.psi.tree.IElementType;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
@@ -41,8 +44,6 @@ public class LexerTest {
         assertEquals("Outline not properly parsed", OrgTokenTypes.OUTLINE, lexer.getTokenType());
 
         eatWhitespace();
-
-        lexer.advance();
         assertEquals("Outline not properly parsed", OrgTokenTypes.OUTLINE, lexer.getTokenType());
     }
 
@@ -56,15 +57,12 @@ public class LexerTest {
         lexer.start(block);
         assertEquals("Block start not properly parsed", OrgTokenTypes.BLOCK_DELIMITER, lexer.getTokenType());
 
-        eatWhitespace();
-
         lexer.advance();
+        eatWhitespace();
         assertEquals("Block content not properly parsed", OrgTokenTypes.BLOCK_CONTENT, lexer.getTokenType());
 
         eatBlockContent();
         eatWhitespace();
-
-        lexer.advance();
         assertEquals("Block end not properly parsed", OrgTokenTypes.BLOCK_DELIMITER, lexer.getTokenType());
     }
 
@@ -95,11 +93,11 @@ public class LexerTest {
 
     @Test
     public void canReadBold(){
-        final String underlined = "*Ima bold text*";
+        final String bold = "*Ima bold text*";
 
-        lexer.start(underlined);
+        lexer.start(bold);
         assertEquals("Underline not properly parsed", OrgTokenTypes.BOLD, lexer.getTokenType());
-        assertEquals("Underline not properly parsed", underlined, lexer.getTokenText());
+        assertEquals("Underline not properly parsed", bold, lexer.getTokenText());
     }
 
     @Test
@@ -112,20 +110,17 @@ public class LexerTest {
         lexer.start(properties);
         assertEquals("Properties block start not properly parsed", OrgTokenTypes.DRAWER_DELIMITER, lexer.getTokenType());
 
-        eatWhitespace();
-
         lexer.advance();
+        eatWhitespace();
         assertEquals("Properties block content not properly parsed", OrgTokenTypes.DRAWER_CONTENT, lexer.getTokenType());
 
         eatPropertiesContent();
         eatWhitespace();
-
-        lexer.advance();
         assertEquals("Properties block end not properly parsed", OrgTokenTypes.DRAWER_DELIMITER, lexer.getTokenType());
     }
 
     private void eatWhitespace() {
-        lexer.advance();
+        eatUntil(OrgTokenTypes.WHITE_SPACE);
     }
 
     /**
@@ -139,14 +134,11 @@ public class LexerTest {
         eatUntil(OrgTokenTypes.DRAWER_CONTENT);
     }
 
-    private void eatUntil(final IElementType stop) {
-        LexerPosition previous = lexer.getCurrentPosition();
-        while(lexer.getTokenType() == stop) {
-            previous = lexer.getCurrentPosition();
+    private void eatUntil(final IElementType... stop) {
+        Set<IElementType> ignores = new HashSet<IElementType>(stop.length);
+        ignores.addAll(Arrays.asList(stop));
+        while(ignores.contains(lexer.getTokenType())) {
             lexer.advance();
         }
-
-        lexer.restore(previous); // do not eat the trailing token after the block content
     }
-
 }
