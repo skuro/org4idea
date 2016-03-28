@@ -94,10 +94,18 @@ public class LexerTest {
     @Test
     public void canReadBold(){
         final String bold = "*Ima bold text*";
-
         lexer.start(bold);
         assertEquals("Underline not properly parsed", OrgTokenTypes.BOLD, lexer.getTokenType());
         assertEquals("Underline not properly parsed", bold, lexer.getTokenText());
+
+        final String bold2 = "After some _underline_ I have some *bold*";
+        lexer.start(bold2);
+
+        eatUntil(OrgTokenTypes.TEXT, OrgTokenTypes.WHITE_SPACE);
+        eatUntil(OrgTokenTypes.UNDERLINE);
+        eatUntil(OrgTokenTypes.TEXT, OrgTokenTypes.WHITE_SPACE);
+        assertEquals("Underline not properly parsed", OrgTokenTypes.BOLD, lexer.getTokenType());
+        assertEquals("Underline not properly parsed", "*bold*", lexer.getTokenText());
     }
 
     @Test
