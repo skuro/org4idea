@@ -24,6 +24,8 @@ public interface OrgTokenTypes {
     IElementType CODE = new OrgElementType("ORG_CODE");
     IElementType ITALIC = new OrgElementType("ORG_ITALIC");
     IElementType UNDERLINE = new OrgElementType("ORG_UNDERLINE");
+    IElementType DRAWER_DELIMITER = new OrgElementType("ORG_DRAWER_DELIMITER");
+    IElementType DRAWER_CONTENT = new OrgElementType("ORG_DRAWER_CONTENT");
 
     // see: tokenset from element
     TokenSet WHITESPACES = TokenSet.create(WHITE_SPACE);

@@ -1,15 +1,15 @@
 package tk.skuro.idea.orgmode.parser;
 
 import com.intellij.lexer.LexerPosition;
+import com.intellij.psi.tree.IElementType;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class LexerTest {
 
-    private OrgLexer lexer;
+    private volatile OrgLexer lexer;
 
     @Before
     public void setup() {
@@ -61,7 +61,7 @@ public class LexerTest {
         lexer.advance();
         assertEquals("Block content not properly parsed", OrgTokenTypes.BLOCK_CONTENT, lexer.getTokenType());
 
-        eatBlockCharacters();
+        eatBlockContent();
         eatWhitespace();
 
         lexer.advance();
@@ -93,14 +93,35 @@ public class LexerTest {
         assertEquals("Underline not properly parsed", underlined, lexer.getTokenText());
     }
 
-    @Ignore("Still need to regenerate the lexer")
     @Test
     public void canReadBold(){
         final String underlined = "*Ima bold text*";
 
         lexer.start(underlined);
-        assertEquals("Underline not properly parsed", OrgTokenTypes.UNDERLINE, lexer.getTokenType());
+        assertEquals("Underline not properly parsed", OrgTokenTypes.BOLD, lexer.getTokenType());
         assertEquals("Underline not properly parsed", underlined, lexer.getTokenText());
+    }
+
+    @Test
+    public void canReadProperties(){
+        final String properties =
+                "    :PROPERTIES:\n" +
+                "       :TEST: foo\n" +
+                "    :END:";
+
+        lexer.start(properties);
+        assertEquals("Properties block start not properly parsed", OrgTokenTypes.DRAWER_DELIMITER, lexer.getTokenType());
+
+        eatWhitespace();
+
+        lexer.advance();
+        assertEquals("Properties block content not properly parsed", OrgTokenTypes.DRAWER_CONTENT, lexer.getTokenType());
+
+        eatPropertiesContent();
+        eatWhitespace();
+
+        lexer.advance();
+        assertEquals("Properties block end not properly parsed", OrgTokenTypes.DRAWER_DELIMITER, lexer.getTokenType());
     }
 
     private void eatWhitespace() {
@@ -110,9 +131,17 @@ public class LexerTest {
     /**
      * Eats all characters inside a block
      */
-    private void eatBlockCharacters() {
+    private void eatBlockContent() {
+        eatUntil(OrgTokenTypes.BLOCK_CONTENT);
+    }
+
+    private void eatPropertiesContent(){
+        eatUntil(OrgTokenTypes.DRAWER_CONTENT);
+    }
+
+    private void eatUntil(final IElementType stop) {
         LexerPosition previous = lexer.getCurrentPosition();
-        while(lexer.getTokenType() == OrgTokenTypes.BLOCK_CONTENT) {
+        while(lexer.getTokenType() == stop) {
             previous = lexer.getCurrentPosition();
             lexer.advance();
         }
