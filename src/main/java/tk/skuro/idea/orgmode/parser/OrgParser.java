@@ -1,14 +1,10 @@
 package tk.skuro.idea.orgmode.parser;
 
-import com.intellij.psi.PsiElement;
-import org.jetbrains.annotations.NotNull;
-
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiParser;
 import com.intellij.psi.tree.IElementType;
-
-import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Carlo Sciolla
