@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class LexerTest {
 
@@ -64,6 +65,17 @@ public class LexerTest {
         eatBlockContent();
         eatWhitespace();
         assertEquals("Block end not properly parsed", OrgTokenTypes.BLOCK_DELIMITER, lexer.getTokenType());
+    }
+
+    @Test
+    public void detectsWrongBlocks(){
+        final String notABlock =
+                        "#+END_SRC\n" +
+                        "(defn foobar)\n" +
+                        "#+BEGIN_SRC";
+
+        lexer.start(notABlock);
+        assertEquals("Block end not properly parsed", OrgTokenTypes.KEYWORD, lexer.getTokenType());
     }
 
     @Test
