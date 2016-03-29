@@ -48,7 +48,7 @@ PROPERTIES_END=[\ \t]*":END:"
     ^{BLOCK_START}    { yybegin(BLOCK); return BLOCK_DELIMITER; }
     ^{KEYWORD}        { yybegin(YYINITIAL); return KEYWORD; }
     ^{CODELINE}       { yybegin(YYINITIAL); return CODE; }
-    ^{WHITE_SPACE_CHAR}+{PROPERTIES_START} { yybegin(PROPERTIES); return DRAWER_DELIMITER; }
+    ^{WHITE_SPACE_CHAR}*{PROPERTIES_START} { yybegin(PROPERTIES); return DRAWER_DELIMITER; }
 }
 
 <PROPERTIES> {

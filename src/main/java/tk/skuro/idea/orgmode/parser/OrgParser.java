@@ -31,6 +31,8 @@ public class OrgParser implements PsiParser {
         final IElementType tokenType = builder.getTokenType();
         if(tokenType == OrgTokenTypes.BLOCK_DELIMITER) {
             parseBlock(builder);
+        } else if(tokenType == OrgTokenTypes.DRAWER_DELIMITER) {
+            parseDrawer(builder);
         }
     }
 
@@ -43,5 +45,16 @@ public class OrgParser implements PsiParser {
 
         if (!builder.eof()) builder.advanceLexer();
         blockMark.done(OrgTokenTypes.BLOCK);
+    }
+
+    private void parseDrawer(PsiBuilder builder) {
+        final PsiBuilder.Marker drawerMarker = builder.mark();
+        do {
+            builder.advanceLexer();
+        }
+        while(builder.getTokenType() != OrgTokenTypes.DRAWER_DELIMITER && !builder.eof());
+
+        if (!builder.eof()) builder.advanceLexer();
+        drawerMarker.done(OrgTokenTypes.DRAWER);
     }
 }

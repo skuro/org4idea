@@ -11,8 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tk.skuro.idea.orgmode.parser.OrgTokenTypes;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Enables blocks folding in org files, e.g. for code blocks, drawers, etc.
@@ -31,7 +30,10 @@ public class OrgFoldingBuilder implements FoldingBuilder {
 
     protected void collectBlocks(final ASTNode node, final List<FoldingDescriptor> descriptors) {
         final IElementType token = node.getElementType();
-        if(token == OrgTokenTypes.BLOCK) {
+        Set<IElementType> blockElements = new HashSet<IElementType>(Arrays.asList(
+                OrgTokenTypes.BLOCK,
+                OrgTokenTypes.DRAWER));
+        if(blockElements.contains(token)) {
             final FoldingDescriptor descriptor = new FoldingDescriptor(node, node.getTextRange());
             descriptors.add(descriptor);
         }

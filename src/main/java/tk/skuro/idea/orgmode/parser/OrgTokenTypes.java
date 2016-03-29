@@ -29,6 +29,7 @@ public interface OrgTokenTypes {
 
     // Block elements
     IElementType BLOCK = new OrgElementType("ORG_BLOCK");
+    IElementType DRAWER = new OrgElementType("ORG_DRAWER");
 
     // see: tokenset from element
     TokenSet WHITESPACES = TokenSet.create(WHITE_SPACE);
