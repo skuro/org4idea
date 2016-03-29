@@ -37,24 +37,21 @@ public class OrgParser implements PsiParser {
     }
 
     private void parseBlock(PsiBuilder builder) {
-        final PsiBuilder.Marker blockMark = builder.mark();
-        do {
-            builder.advanceLexer();
-        }
-        while(builder.getTokenType() != OrgTokenTypes.BLOCK_DELIMITER && !builder.eof());
-
-        if (!builder.eof()) builder.advanceLexer();
-        blockMark.done(OrgTokenTypes.BLOCK);
+        parseBlockElement(builder, OrgTokenTypes.BLOCK_DELIMITER, OrgTokenTypes.BLOCK);
     }
 
     private void parseDrawer(PsiBuilder builder) {
+        parseBlockElement(builder, OrgTokenTypes.DRAWER_DELIMITER, OrgTokenTypes.DRAWER);
+    }
+
+    private void parseBlockElement(final PsiBuilder builder, final IElementType delimiter, final IElementType type) {
         final PsiBuilder.Marker drawerMarker = builder.mark();
         do {
             builder.advanceLexer();
         }
-        while(builder.getTokenType() != OrgTokenTypes.DRAWER_DELIMITER && !builder.eof());
+        while(builder.getTokenType() != delimiter && !builder.eof());
 
         if (!builder.eof()) builder.advanceLexer();
-        drawerMarker.done(OrgTokenTypes.DRAWER);
+        drawerMarker.done(type);
     }
 }
