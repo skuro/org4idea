@@ -13,8 +13,10 @@
         <![CDATA[
         Idea plugin to edit <a href="http://orgmode.org/">OrgMode</a> files
         <ul>
-            <li> supports basic outline and comments</li>
-            <li> supports spell checkying</li>
+            <li>supports basic outline and comments</li>
+            <li>block elements folding</li>
+            <li>spell checking</li>
+            <li>live templates</li>
         </ul>
 
         More features on the go!
@@ -24,8 +26,9 @@
         <![CDATA[
             <p>0.3.0</p>
             <ul>
-                <li>Initial support for folding code blocks</li>
+                <li>Initial support for folding code blocks and drawers</li>
                 <li>Minor improvements on the preferences pane</li>
+                <li>Internal refactoring to leverage a BNF grammar instead of using a handwritten parser</li>
             </ul>
             <p>0.2.0</p>
             <ul>
