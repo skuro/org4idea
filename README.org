@@ -16,12 +16,13 @@ These feature only requires some Intellij customisation of the plugin, and basic
   - [X] active live template
   - [X] Keywords/blocks highlight
   - [X] Comments
-  - [ ] bold, slant, code highlight
+  - [X] bold, slant, code highlight
 
 ** Structure aware features
   The following feature will require some working grammar and a parser to be really supported.
-  - [ ] proper file parsing
-  - [ ] folding
+  - [X] proper file parsing
+  - [X] folding (only for drawers and blocks)
+  - [ ] folding (for outlines)
   - [ ] tagging
 
 ** Miscellaneous

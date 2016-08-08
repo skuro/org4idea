@@ -28,6 +28,11 @@ public class OrgFoldingBuilder implements FoldingBuilder {
         return descriptors.toArray(new FoldingDescriptor[descriptors.size()]);
     }
 
+    /**
+     *
+     * @param node
+     * @param descriptors
+     */
     protected void collectBlocks(final ASTNode node, final List<FoldingDescriptor> descriptors) {
         final IElementType token = node.getElementType();
         Set<IElementType> blockElements = new HashSet<IElementType>(Arrays.asList(
