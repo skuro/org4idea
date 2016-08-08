@@ -20,6 +20,8 @@ import com.intellij.psi.tree.IStubFileElementType;
 import com.intellij.psi.tree.TokenSet;
 
 /**
+ * Combines all the elements required to properly parse org-mode text
+ *
  * @author Carlo Sciolla
  * @since 0.1
  */
@@ -49,7 +51,7 @@ public class OrgParserDefinition implements ParserDefinition {
     }
 
     /**
-     * Get the element type of the node describing a Markdown file.
+     * Get the element type of the node describing an org-mode file.
      *
      * @return A {@link IStubFileElementType} using {@link OrgLanguage#INSTANCE}
      */
@@ -66,7 +68,7 @@ public class OrgParserDefinition implements ParserDefinition {
     @NotNull
     @Override
     public TokenSet getWhitespaceTokens() {
-        return OrgTokenTypes.WHITESPACES;
+        return TokenSet.create(OrgTokenTypes.WHITE_SPACE);
     }
 
     /**
@@ -77,7 +79,7 @@ public class OrgParserDefinition implements ParserDefinition {
     @NotNull
     @Override
     public TokenSet getCommentTokens() {
-        return OrgTokenTypes.COMMENTS;
+        return TokenSet.create(OrgTokenTypes.COMMENT);
     }
 
     /**

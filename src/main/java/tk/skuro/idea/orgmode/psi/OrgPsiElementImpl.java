@@ -4,6 +4,8 @@ import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
 
 /**
+ * An element in the AST of the parsed org-mode file
+ *
  * @author Carlo Sciolla
  * @since 0.1
  */

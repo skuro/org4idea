@@ -15,7 +15,6 @@ public interface OrgHighlighterColors {
     /**
      * Default style for outline
      */
-    // TODO: different style for outline levels
     TextAttributesKey OUTLINE_ATTR_KEY = createTextAttributesKey("ORG.OUTLINE", KEYWORD);
 
     /**
@@ -31,8 +30,7 @@ public interface OrgHighlighterColors {
     /**
      * Default style of block delimiter
      */
-    TextAttributesKey BLOCK_DELIM_ATTR_KEY = createTextAttributesKey("ORG.BLOCK_DELIMITER",
-            KEYWORD_ATTR_KEY);
+    TextAttributesKey BLOCK_DELIM_ATTR_KEY = createTextAttributesKey("ORG.BLOCK_DELIMITER", KEYWORD_ATTR_KEY);
 
     /**
      * Default style of code
@@ -42,23 +40,12 @@ public interface OrgHighlighterColors {
     /**
      * Default style of block content
      */
-    TextAttributesKey BLOCK_CONTENT_ATTR_KEY = createTextAttributesKey("ORG.BLOCK_CONTENT",
-            CODE_ATTR_KEY);
+    TextAttributesKey BLOCK_CONTENT_ATTR_KEY = createTextAttributesKey("ORG.BLOCK_CONTENT", CODE_ATTR_KEY);
 
     /**
      * Default style of Bold text
      */
     TextAttributesKey BOLD_ATTR_KEY = createTextAttributesKey("ORG.BOLD", STRING);
-
-    /**
-     * Default style of verbatim text
-     */
-    TextAttributesKey VERBATIM_ATTR_KEY = createTextAttributesKey("ORG.VERBATIM", STRING);
-
-    /**
-     * Default style of strokethrought text
-     */
-    TextAttributesKey STRIKETHROUGH_ATTR_KEY = createTextAttributesKey("ORG.STRIKETHROUGH", STRING);
     /**
      * Default style of underline text
      */

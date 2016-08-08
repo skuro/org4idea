@@ -21,6 +21,15 @@ public class LexerTest {
     }
 
     @Test
+    public void canReadWhitespace() {
+        final String whites = "  \t\n";
+        lexer.start(whites);
+
+        assertEquals("Whitespaces not properly recognized", OrgTokenTypes.WHITE_SPACE, lexer.getTokenType());
+        assertEquals("Whitespaces of length > 1 not properly recognized", 4, lexer.getTokenEnd() - lexer.getTokenStart());
+    }
+
+    @Test
     public void canReadComments() {
         final String comment = "# I'm a comment";
         lexer.start(comment);
@@ -33,6 +42,7 @@ public class LexerTest {
         final String comment = "  # I'm a comment";
         lexer.start(comment);
 
+        eatWhitespace();
         assertEquals("Comment not properly parsed", OrgTokenTypes.COMMENT, lexer.getTokenType());
     }
 
@@ -56,7 +66,7 @@ public class LexerTest {
                 "#+END_SRC";
 
         lexer.start(block);
-        assertEquals("Block start not properly parsed", OrgTokenTypes.BLOCK_DELIMITER, lexer.getTokenType());
+        assertEquals("Block start not properly parsed", OrgTokenTypes.BLOCK_START, lexer.getTokenType());
 
         lexer.advance();
         eatWhitespace();
@@ -64,7 +74,7 @@ public class LexerTest {
 
         eatBlockContent();
         eatWhitespace();
-        assertEquals("Block end not properly parsed", OrgTokenTypes.BLOCK_DELIMITER, lexer.getTokenType());
+        assertEquals("Block end not properly parsed", OrgTokenTypes.BLOCK_END, lexer.getTokenType());
     }
 
     @Test
@@ -75,7 +85,7 @@ public class LexerTest {
                         "#+BEGIN_SRC";
 
         lexer.start(notABlock);
-        assertEquals("Block end not properly parsed", OrgTokenTypes.KEYWORD, lexer.getTokenType());
+        assertEquals("Block end not properly parsed", OrgTokenTypes.UNMATCHED_DELIMITER, lexer.getTokenType());
     }
 
     @Test
@@ -105,10 +115,13 @@ public class LexerTest {
 
     @Test
     public void canReadBold(){
-        final String bold = "*Ima bold text*";
+        final String bold = " *I'm a bold text*";
         lexer.start(bold);
+
+        eatWhitespace();
+
         assertEquals("Underline not properly parsed", OrgTokenTypes.BOLD, lexer.getTokenType());
-        assertEquals("Underline not properly parsed", bold, lexer.getTokenText());
+        assertEquals("Underline not properly parsed", bold.substring(1), lexer.getTokenText());
 
         final String bold2 = "After some _underline_ I have some *bold*";
         lexer.start(bold2);

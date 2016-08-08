@@ -1,43 +1,47 @@
+// This is a generated file. Not intended for manual editing.
 package tk.skuro.idea.orgmode.parser;
 
-import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.TokenSet;
+import com.intellij.psi.PsiElement;
+import com.intellij.lang.ASTNode;
+import tk.skuro.idea.orgmode.psi.impl.*;
 
-/**
- * Org Tokens for lexing
- *
- * @author Carlo Sciolla
- * @since 0.1
- */
 public interface OrgTokenTypes {
 
-    IElementType WHITE_SPACE = TokenType.WHITE_SPACE;
-    IElementType BAD_CHARACTER = TokenType.BAD_CHARACTER;
-    IElementType KEYWORD = new OrgElementType("ORG_KEYWORD");
-    IElementType COMMENT = new OrgElementType("ORG_COMMENT");
-    IElementType OUTLINE = new OrgElementType("ORG_OUTLINE");
-    IElementType BLOCK_DELIMITER = new OrgElementType("ORG_BLOCK_DELIMITER");
-    IElementType BLOCK_CONTENT = new OrgElementType("ORG_BLOCK_CONTENT");
-    IElementType TEXT = new OrgElementType("ORG_TEXT");
-    IElementType BOLD = new OrgElementType("ORG_BOLD");
-    IElementType CODE = new OrgElementType("ORG_CODE");
-    IElementType ITALIC = new OrgElementType("ORG_ITALIC");
-    IElementType UNDERLINE = new OrgElementType("ORG_UNDERLINE");
-    IElementType DRAWER_DELIMITER = new OrgElementType("ORG_DRAWER_DELIMITER");
-    IElementType DRAWER_CONTENT = new OrgElementType("ORG_DRAWER_CONTENT");
+  IElementType BLOCK = new OrgTokenType("BLOCK");
+  IElementType DRAWER = new OrgTokenType("DRAWER");
+  IElementType TEXT_ELEMENT = new OrgTokenType("TEXT_ELEMENT");
 
-    // Block elements
-    IElementType BLOCK = new OrgElementType("ORG_BLOCK");
-    IElementType DRAWER = new OrgElementType("ORG_DRAWER");
+  IElementType BLOCK_CONTENT = new OrgElementType("BLOCK_CONTENT");
+  IElementType BLOCK_END = new OrgElementType("BLOCK_END");
+  IElementType BLOCK_START = new OrgElementType("BLOCK_START");
+  IElementType BOLD = new OrgElementType("BOLD");
+  IElementType CODE = new OrgElementType("CODE");
+  IElementType COMMENT = new OrgElementType("COMMENT");
+  IElementType CRLF = new OrgElementType("CRLF");
+  IElementType DRAWER_CONTENT = new OrgElementType("DRAWER_CONTENT");
+  IElementType DRAWER_DELIMITER = new OrgElementType("DRAWER_DELIMITER");
+  IElementType KEYWORD = new OrgElementType("KEYWORD");
+  IElementType OUTLINE = new OrgElementType("OUTLINE");
+  IElementType PROPERTIES = new OrgElementType("PROPERTIES");
+  IElementType TEXT = new OrgElementType("TEXT");
+  IElementType UNDERLINE = new OrgElementType("UNDERLINE");
+  IElementType UNMATCHED_DELIMITER = new OrgElementType("UNMATCHED_DELIMITER");
+  IElementType WHITE_SPACE = new OrgElementType("WHITE_SPACE");
 
-    // see: tokenset from element
-    TokenSet WHITESPACES = TokenSet.create(WHITE_SPACE);
-    TokenSet COMMENTS = TokenSet.create(COMMENT);
-    TokenSet OUTLINES = TokenSet.create(OUTLINE);
-    TokenSet KEYWORDS = TokenSet.create(KEYWORD);
-    TokenSet UNDERLINES = TokenSet.create(UNDERLINE);
-    TokenSet CODES = TokenSet.create(CODE);
-    TokenSet BLOCK_DELIMITERS = TokenSet.create(BLOCK_DELIMITER);
-    TokenSet BLOCK_CONTENTS = TokenSet.create(BLOCK_CONTENT);
+  class Factory {
+    public static PsiElement createElement(ASTNode node) {
+      IElementType type = node.getElementType();
+       if (type == BLOCK) {
+        return new OrgBlockImpl(node);
+      }
+      else if (type == DRAWER) {
+        return new OrgDrawerImpl(node);
+      }
+      else if (type == TEXT_ELEMENT) {
+        return new OrgTextElementImpl(node);
+      }
+      throw new AssertionError("Unknown element type: " + type);
+    }
+  }
 }

@@ -1,0 +1,23 @@
+{
+  parserClass="tk.skuro.idea.orgmode.parser.OrgParser"
+
+  extends="tk.skuro.idea.orgmode.psi.OrgPsiElementImpl"
+
+  psiClassPrefix="Org"
+  psiImplClassSuffix="Impl"
+  psiPackage="tk.skuro.idea.orgmode.psi"
+  psiImplPackage="tk.skuro.idea.orgmode.psi.impl"
+
+  elementTypeHolderClass="tk.skuro.idea.orgmode.parser.OrgTokenTypes"
+  elementTypeClass="tk.skuro.idea.orgmode.parser.OrgTokenType"
+  tokenTypeClass="tk.skuro.idea.orgmode.parser.OrgElementType"
+}
+
+orgFile ::= item_*
+
+private item_ ::= (OUTLINE|COMMENT|KEYWORD|CODE|PROPERTIES|WHITE_SPACE|UNMATCHED_DELIMITER|block|drawer|text_element)
+
+text_element ::= TEXT | UNDERLINE | BOLD | CRLF
+
+block ::= BLOCK_START BLOCK_CONTENT* BLOCK_END
+drawer ::= DRAWER_DELIMITER DRAWER_CONTENT* DRAWER_DELIMITER

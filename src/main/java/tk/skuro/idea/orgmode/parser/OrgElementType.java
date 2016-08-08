@@ -1,23 +1,15 @@
 package tk.skuro.idea.orgmode.parser;
 
+import com.intellij.psi.tree.IElementType;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 import tk.skuro.idea.orgmode.OrgLanguage;
 
-import org.jetbrains.annotations.NonNls;
-
-import com.intellij.psi.tree.IElementType;
-
 /**
- * Class to represent and OrgElement
- *
- * @author Carlo Sciolla
- * @since 0.1
+ * Created by skuro on 08/08/16.
  */
 public class OrgElementType extends IElementType {
-
-    public OrgElementType(@NonNls String debugId) {
-        super(debugId, OrgLanguage.INSTANCE);
+    public OrgElementType(@NotNull @NonNls String debugName) {
+        super(debugName, OrgLanguage.INSTANCE);
     }
-
-    // ¤maybe: add extra information?
-
 }

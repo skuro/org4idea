@@ -1,5 +1,6 @@
 package tk.skuro.idea.orgmode.highlight;
 
+import com.intellij.psi.tree.TokenSet;
 import tk.skuro.idea.orgmode.parser.OrgLexer;
 import tk.skuro.idea.orgmode.parser.OrgTokenTypes;
 
@@ -24,13 +25,15 @@ public class OrgSyntaxHighlighter extends SyntaxHighlighterBase {
     protected static final Map<IElementType, TextAttributesKey> ATTRIBUTES = new HashMap<IElementType, TextAttributesKey>();
 
     static {
-        fillMap(ATTRIBUTES, OrgTokenTypes.COMMENTS, OrgHighlighterColors.COMMENTS_ATTR_KEY);
-        fillMap(ATTRIBUTES, OrgTokenTypes.OUTLINES, OrgHighlighterColors.OUTLINE_ATTR_KEY);
-        fillMap(ATTRIBUTES, OrgTokenTypes.UNDERLINES, OrgHighlighterColors.UNDERLINE_ATTR_KEY);
-        fillMap(ATTRIBUTES, OrgTokenTypes.KEYWORDS, OrgHighlighterColors.KEYWORD_ATTR_KEY);
-        fillMap(ATTRIBUTES, OrgTokenTypes.CODES, OrgHighlighterColors.CODE_ATTR_KEY);
-        fillMap(ATTRIBUTES, OrgTokenTypes.BLOCK_CONTENTS, OrgHighlighterColors.BLOCK_CONTENT_ATTR_KEY);
-        fillMap(ATTRIBUTES, OrgTokenTypes.BLOCK_DELIMITERS, OrgHighlighterColors.BLOCK_DELIM_ATTR_KEY);
+        fillMap(ATTRIBUTES, TokenSet.create(OrgTokenTypes.COMMENT), OrgHighlighterColors.COMMENTS_ATTR_KEY);
+        fillMap(ATTRIBUTES, TokenSet.create(OrgTokenTypes.OUTLINE), OrgHighlighterColors.OUTLINE_ATTR_KEY);
+        fillMap(ATTRIBUTES, TokenSet.create(OrgTokenTypes.BOLD), OrgHighlighterColors.BOLD_ATTR_KEY);
+        fillMap(ATTRIBUTES, TokenSet.create(OrgTokenTypes.UNDERLINE), OrgHighlighterColors.UNDERLINE_ATTR_KEY);
+        fillMap(ATTRIBUTES, TokenSet.create(OrgTokenTypes.KEYWORD), OrgHighlighterColors.KEYWORD_ATTR_KEY);
+        fillMap(ATTRIBUTES, TokenSet.create(OrgTokenTypes.CODE), OrgHighlighterColors.CODE_ATTR_KEY);
+        fillMap(ATTRIBUTES, TokenSet.create(OrgTokenTypes.BLOCK_CONTENT), OrgHighlighterColors.BLOCK_CONTENT_ATTR_KEY);
+        fillMap(ATTRIBUTES, TokenSet.create(OrgTokenTypes.BLOCK_START, OrgTokenTypes.BLOCK_END),
+                OrgHighlighterColors.BLOCK_DELIM_ATTR_KEY);
         // maybe refactor with static import
     }
 
