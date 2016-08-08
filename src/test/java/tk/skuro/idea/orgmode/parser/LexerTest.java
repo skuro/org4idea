@@ -35,6 +35,7 @@ public class LexerTest {
         lexer.start(comment);
 
         assertEquals("Comment not properly parsed", OrgTokenTypes.COMMENT, lexer.getTokenType());
+        assertEquals("Comment parsing stops too early", comment, lexer.getTokenText());
     }
 
     @Test
