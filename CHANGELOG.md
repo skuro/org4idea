@@ -2,9 +2,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased][unreleased]
+## [0.3.1] - 2016-08-10
 ### Added
-- Introduce a real grammar for Org
++ Code folding for outlines
+
+## [0.3.0] - 2016-08-09
+### Added
++ Code folding for drawers and blocks
+### Changed
++ Parsing is now done using a proper BNF grammar instead of a homegrown parser
 
 ## [0.2] - 2015-02-14
 ### Added
@@ -14,7 +20,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   - Commenter
   - Todo Indexing
 ### Changed
-- Repositery reorganisation with maven structure
+- Repository reorganisation with maven structure
 - Better highlighting and color options
 
 <!-- TODO older changelog? -->
