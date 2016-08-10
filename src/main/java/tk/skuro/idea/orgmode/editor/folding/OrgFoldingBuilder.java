@@ -20,6 +20,11 @@ import java.util.*;
  * @since 0.3.0
  */
 public class OrgFoldingBuilder implements FoldingBuilder {
+
+    private final static Set<IElementType> BLOCK_ELEMENTS = new HashSet<IElementType>(Arrays.asList(
+            OrgTokenTypes.BLOCK,
+            OrgTokenTypes.DRAWER));
+
     @NotNull
     @Override
     public FoldingDescriptor[] buildFoldRegions(@NotNull ASTNode astNode, @NotNull Document document) {
@@ -35,17 +40,82 @@ public class OrgFoldingBuilder implements FoldingBuilder {
      */
     protected void collectBlocks(final ASTNode node, final List<FoldingDescriptor> descriptors) {
         final IElementType token = node.getElementType();
-        Set<IElementType> blockElements = new HashSet<IElementType>(Arrays.asList(
-                OrgTokenTypes.BLOCK,
-                OrgTokenTypes.DRAWER));
-        if(blockElements.contains(token)) {
-            final FoldingDescriptor descriptor = new FoldingDescriptor(node, node.getTextRange());
-            descriptors.add(descriptor);
+
+        if(isBlock(token)) {
+            foldBlock(node, descriptors);
+        } else if (isOutline(token)) {
+            foldOutline(node, descriptors);
         }
 
         for(ASTNode child : node.getChildren(null)) {
             collectBlocks(child, descriptors);
         }
+    }
+
+    private void foldOutline(ASTNode node, List<FoldingDescriptor> descriptors) {
+        final ASTNode nextSibling = findNextOutline(node);
+        final TextRange textRange;
+        if(nextSibling != null) {
+             textRange = TextRange.create(node.getStartOffset(), nextSibling.getStartOffset() - 1);
+        } else {
+            textRange = TextRange.create(node.getStartOffset(), getLastNode(node).getStartOffset());
+        }
+        final FoldingDescriptor descriptor = new FoldingDescriptor(node, textRange);
+        descriptors.add(descriptor);
+    }
+
+    private ASTNode getLastNode(ASTNode node) {
+        return node.getTreeParent().getLastChildNode();
+    }
+
+    /**
+     * Find the next outline after the given node which has a depth equal or higher (-> less stars) than the current outline depth
+     * Also stops
+     * @param node The current outline node
+     * @return The node representing the next outline with a depth equal or higher (-> less stars) than the current one
+     */
+    private ASTNode findNextOutline(ASTNode node) {
+        final int depth = outlineDepth(node.getText());
+
+        ASTNode next = null;
+        for(ASTNode candidate = node.getTreeNext(); candidate != null && next == null; candidate = candidate.getTreeNext()) {
+            if(isPeerOutline(depth, candidate)) {
+                next = candidate;
+            }
+        }
+
+        return next;
+    }
+
+    private boolean isPeerOutline(int depth, ASTNode candidate) {
+        return isOutline(candidate.getElementType()) && outlineDepth(candidate.getText()) <= depth;
+    }
+
+    /**
+     * Count how many stars are used in an outline, indicating its depth
+     *
+     * @param text The text of the outline
+     * @return The number of initial stars in the outline
+     */
+    private int outlineDepth(String text) {
+        if(text.startsWith("*")) {
+            return text.split("[^*]")[0].length();
+        } else {
+            return 0;
+        }
+    }
+
+    private void foldBlock(ASTNode node, List<FoldingDescriptor> descriptors) {
+        final FoldingDescriptor descriptor = new FoldingDescriptor(node, node.getTextRange());
+        descriptors.add(descriptor);
+    }
+
+    private boolean isOutline(IElementType token) {
+        return OrgTokenTypes.OUTLINE.equals(token);
+    }
+
+    private boolean isBlock(IElementType token) {
+        return BLOCK_ELEMENTS.contains(token);
     }
 
     @Nullable
