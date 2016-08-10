@@ -1,14 +1,31 @@
 package tk.skuro.idea.orgmode.parser;
 
-import org.junit.Before;
+import com.intellij.testFramework.ParsingTestCase;
 
-public class ParserTest {
+public class ParserTest extends ParsingTestCase {
 
-    private OrgParser parser;
-
-    @Before
-    public void setup(){
-        parser = new OrgParser();
+    public ParserTest() {
+        super("", "org", new OrgParserDefinition());
     }
+
+    public void testParsingTestData() {
+        doTest(true);
+    }
+
+    @Override
+    protected String getTestDataPath() {
+        return "src/test/resources/parsing";
+    }
+
+    @Override
+    protected boolean skipSpaces() {
+        return false;
+    }
+
+    @Override
+    protected boolean includeRanges() {
+        return true;
+    }
+
 
 }

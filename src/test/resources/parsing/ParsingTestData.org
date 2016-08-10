@@ -1,0 +1,29 @@
+:PROPERTIES:
+  :Tst: 42
+:END:
+
+
+#+BEGIN_SRC clojure
+(defn universe [] 42)
+#+END_SRC
+
+# misplaced block end:
+#+END_SRC
+
+# and this is just a comment
+
+_I'm underlined text_
+
+ * I'm bold text *
+
+* Test one
+    I'm part of the *first* outline
+
+* Test folding
+
+** Test two
+    This is part of the second outline
+
+    - one
+    - two
+    - three
