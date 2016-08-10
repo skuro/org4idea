@@ -1,6 +1,6 @@
 #+TITLE: org4idea: edit org-mode files from IntelliJ
 
-[[media/screenshot_new.png]]
+[[media/screenshot_new.png]] [[https://img.shields.io/badge/gitter-org4idea-green.svg][https://gitter.im/org4idea/Lobby]]
 
 * Introduction
 
