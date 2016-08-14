@@ -15,6 +15,10 @@ public class OrgVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitOutlineBlock(@NotNull OrgOutlineBlock o) {
+    visitPsiElement(o);
+  }
+
   public void visitTextElement(@NotNull OrgTextElement o) {
     visitPsiElement(o);
   }

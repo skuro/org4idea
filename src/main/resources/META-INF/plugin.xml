@@ -22,6 +22,7 @@
         More features on the go!
         ]]>
     </description>
+
     <change-notes>
         <![CDATA[
             <p>0.3.1</p>
@@ -49,6 +50,14 @@
             </ul>
        ]]>
     </change-notes>
+
+    <actions>
+        <action id="Org4Idea.NewOutlineSameLevel" class="tk.skuro.idea.orgmode.editor.actions.NewOutlineSameLevel"
+                text="New outline" description="Create a new outline at the same level as the current one">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl ENTER"/>
+        </action>
+    </actions>
 
     <extensions defaultExtensionNs="com.intellij">
         <fileTypeFactory implementation="tk.skuro.idea.orgmode.OrgFileTypeFactory" />

@@ -29,6 +29,9 @@ public class OrgParser implements PsiParser, LightPsiParser {
     else if (t == DRAWER) {
       r = drawer(b, 0);
     }
+    else if (t == OUTLINE_BLOCK) {
+      r = outlineBlock(b, 0);
+    }
     else if (t == TEXT_ELEMENT) {
       r = text_element(b, 0);
     }
@@ -95,18 +98,18 @@ public class OrgParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // OUTLINE|COMMENT|KEYWORD|CODE|PROPERTIES|WHITE_SPACE|UNMATCHED_DELIMITER|block|drawer|text_element
+  // COMMENT|KEYWORD|CODE|PROPERTIES|WHITE_SPACE|UNMATCHED_DELIMITER|outlineBlock|block|drawer|text_element
   static boolean item_(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "item_")) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeToken(b, OUTLINE);
-    if (!r) r = consumeToken(b, COMMENT);
+    r = consumeToken(b, COMMENT);
     if (!r) r = consumeToken(b, KEYWORD);
     if (!r) r = consumeToken(b, CODE);
     if (!r) r = consumeToken(b, PROPERTIES);
     if (!r) r = consumeToken(b, WHITE_SPACE);
     if (!r) r = consumeToken(b, UNMATCHED_DELIMITER);
+    if (!r) r = outlineBlock(b, l + 1);
     if (!r) r = block(b, l + 1);
     if (!r) r = drawer(b, l + 1);
     if (!r) r = text_element(b, l + 1);
@@ -125,6 +128,18 @@ public class OrgParser implements PsiParser, LightPsiParser {
       c = current_position_(b);
     }
     return true;
+  }
+
+  /* ********************************************************** */
+  // OUTLINE
+  public static boolean outlineBlock(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "outlineBlock")) return false;
+    if (!nextTokenIs(b, OUTLINE)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, OUTLINE);
+    exit_section_(b, m, OUTLINE_BLOCK, r);
+    return r;
   }
 
   /* ********************************************************** */

@@ -15,9 +15,10 @@
 
 orgFile ::= item_*
 
-private item_ ::= (OUTLINE|COMMENT|KEYWORD|CODE|PROPERTIES|WHITE_SPACE|UNMATCHED_DELIMITER|block|drawer|text_element)
+private item_ ::= (COMMENT|KEYWORD|CODE|PROPERTIES|WHITE_SPACE|UNMATCHED_DELIMITER|outlineBlock|block|drawer|text_element)
 
 text_element ::= TEXT | UNDERLINE | BOLD | CRLF
 
 block ::= BLOCK_START BLOCK_CONTENT* BLOCK_END
 drawer ::= DRAWER_DELIMITER DRAWER_CONTENT* DRAWER_DELIMITER
+outlineBlock ::= OUTLINE

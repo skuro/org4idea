@@ -10,6 +10,7 @@ public interface OrgTokenTypes {
 
   IElementType BLOCK = new OrgTokenType("BLOCK");
   IElementType DRAWER = new OrgTokenType("DRAWER");
+  IElementType OUTLINE_BLOCK = new OrgTokenType("OUTLINE_BLOCK");
   IElementType TEXT_ELEMENT = new OrgTokenType("TEXT_ELEMENT");
 
   IElementType BLOCK_CONTENT = new OrgElementType("BLOCK_CONTENT");
@@ -37,6 +38,9 @@ public interface OrgTokenTypes {
       }
       else if (type == DRAWER) {
         return new OrgDrawerImpl(node);
+      }
+      else if (type == OUTLINE_BLOCK) {
+        return new OrgOutlineBlockImpl(node);
       }
       else if (type == TEXT_ELEMENT) {
         return new OrgTextElementImpl(node);
