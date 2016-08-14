@@ -5,7 +5,6 @@ import com.intellij.lang.folding.FoldingBuilder;
 import com.intellij.lang.folding.FoldingDescriptor;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -64,8 +63,11 @@ public class OrgFoldingBuilder implements FoldingBuilder {
         descriptors.add(descriptor);
     }
 
-    private ASTNode getLastNode(ASTNode node) {
-        return node.getTreeParent().getLastChildNode();
+    private ASTNode getLastNode(ASTNode node) {ASTNode candidate = node;
+        while(candidate.getTreeParent() != null) {
+            candidate = candidate.getTreeParent();
+        }
+        return candidate.getLastChildNode();
     }
 
     /**
@@ -78,7 +80,8 @@ public class OrgFoldingBuilder implements FoldingBuilder {
         final int depth = outlineDepth(node.getText());
 
         ASTNode next = null;
-        for(ASTNode candidate = node.getTreeNext(); candidate != null && next == null; candidate = candidate.getTreeNext()) {
+        ASTNode outlineBlock = node.getTreeParent();
+        for(ASTNode candidate = outlineBlock.getTreeNext(); candidate != null && next == null; candidate = candidate.getTreeNext()) {
             if(isPeerOutline(depth, candidate)) {
                 next = candidate;
             }
@@ -88,7 +91,15 @@ public class OrgFoldingBuilder implements FoldingBuilder {
     }
 
     private boolean isPeerOutline(int depth, ASTNode candidate) {
-        return isOutline(candidate.getElementType()) && outlineDepth(candidate.getText()) <= depth;
+        if(isOutlineBlock(candidate.getElementType())) {
+            return isPeerOutline(depth, candidate.getFirstChildNode());
+        } else {
+            return isOutline(candidate.getElementType()) && outlineDepth(candidate.getText()) <= depth;
+        }
+    }
+
+    private boolean isOutlineBlock(IElementType token) {
+        return OrgTokenTypes.OUTLINE_BLOCK.equals(token);
     }
 
     /**
