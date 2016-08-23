@@ -33,20 +33,19 @@ public class OrgFoldingBuilder implements FoldingBuilder {
     }
 
     /**
-     *
      * @param node
      * @param descriptors
      */
     protected void collectBlocks(final ASTNode node, final List<FoldingDescriptor> descriptors) {
         final IElementType token = node.getElementType();
 
-        if(isBlock(token)) {
+        if (isBlock(token)) {
             foldBlock(node, descriptors);
         } else if (isOutline(token)) {
             foldOutline(node, descriptors);
         }
 
-        for(ASTNode child : node.getChildren(null)) {
+        for (ASTNode child : node.getChildren(null)) {
             collectBlocks(child, descriptors);
         }
     }
@@ -54,17 +53,27 @@ public class OrgFoldingBuilder implements FoldingBuilder {
     private void foldOutline(ASTNode node, List<FoldingDescriptor> descriptors) {
         final ASTNode nextSibling = findNextOutline(node);
         final TextRange textRange;
-        if(nextSibling != null) {
-             textRange = TextRange.create(node.getStartOffset(), nextSibling.getStartOffset() - 1);
+        if (nextSibling != null) {
+            textRange = TextRange.create(node.getStartOffset(), nextSibling.getStartOffset() - 1);
+            final FoldingDescriptor descriptor = new FoldingDescriptor(node, textRange);
+            descriptors.add(descriptor);
         } else {
-            textRange = TextRange.create(node.getStartOffset(), getLastNode(node).getStartOffset());
+            final ASTNode lastNode = getLastNode(node);
+            if (!sameNode(node, lastNode)) {
+                textRange = TextRange.create(node.getStartOffset(), lastNode.getStartOffset());
+                final FoldingDescriptor descriptor = new FoldingDescriptor(node, textRange);
+                descriptors.add(descriptor);
+            }
         }
-        final FoldingDescriptor descriptor = new FoldingDescriptor(node, textRange);
-        descriptors.add(descriptor);
     }
 
-    private ASTNode getLastNode(ASTNode node) {ASTNode candidate = node;
-        while(candidate.getTreeParent() != null) {
+    private boolean sameNode(ASTNode node, ASTNode lastNode) {
+        return node.getTextRange().getEndOffset() == lastNode.getTextRange().getEndOffset();
+    }
+
+    private ASTNode getLastNode(ASTNode node) {
+        ASTNode candidate = node;
+        while (candidate.getTreeParent() != null) {
             candidate = candidate.getTreeParent();
         }
         return candidate.getLastChildNode();
@@ -73,6 +82,7 @@ public class OrgFoldingBuilder implements FoldingBuilder {
     /**
      * Find the next outline after the given node which has a depth equal or higher (-> less stars) than the current outline depth
      * Also stops
+     *
      * @param node The current outline node
      * @return The node representing the next outline with a depth equal or higher (-> less stars) than the current one
      */
@@ -81,8 +91,8 @@ public class OrgFoldingBuilder implements FoldingBuilder {
 
         ASTNode next = null;
         ASTNode outlineBlock = node.getTreeParent();
-        for(ASTNode candidate = outlineBlock.getTreeNext(); candidate != null && next == null; candidate = candidate.getTreeNext()) {
-            if(isPeerOutline(depth, candidate)) {
+        for (ASTNode candidate = outlineBlock.getTreeNext(); candidate != null && next == null; candidate = candidate.getTreeNext()) {
+            if (isPeerOutline(depth, candidate)) {
                 next = candidate;
             }
         }
@@ -91,7 +101,7 @@ public class OrgFoldingBuilder implements FoldingBuilder {
     }
 
     private boolean isPeerOutline(int depth, ASTNode candidate) {
-        if(isOutlineBlock(candidate.getElementType())) {
+        if (isOutlineBlock(candidate.getElementType())) {
             return isPeerOutline(depth, candidate.getFirstChildNode());
         } else {
             return isOutline(candidate.getElementType()) && outlineDepth(candidate.getText()) <= depth;
@@ -109,7 +119,7 @@ public class OrgFoldingBuilder implements FoldingBuilder {
      * @return The number of initial stars in the outline
      */
     private int outlineDepth(String text) {
-        if(text.startsWith("*")) {
+        if (text.startsWith("*")) {
             return text.split("[^*]")[0].length();
         } else {
             return 0;
