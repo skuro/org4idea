@@ -24,7 +24,7 @@ import static tk.skuro.idea.orgmode.parser.OrgTokenTypes.*;
 CRLF= \n|\r|\r\n
 SPACES = [\ \t]
 WHITE_SPACE_CHAR = {CRLF}|{SPACES}|[\f]
-INPUT_CHARACTER = [^\r\n\f\a]
+INPUT_CHARACTER = [^\r\n\f]
 INPUT_OR_SPACES = ({INPUT_CHARACTER}|{SPACES})
 
 COMMENT ="#".*
