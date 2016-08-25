@@ -42,20 +42,27 @@ public class NewOutlineSameLevel extends AnAction {
         // first search if the caret is itself within an outline text
         PsiElement currentOutline = getParentOutlineOrSelf(element);
         if (currentOutline != null) {
-            addText(editor, file, currentOutline.getTextRange().getEndOffset(), createOutlineSameDepthAs(currentOutline));
+            final int offset = currentOutline.getTextRange().getEndOffset();
+            final String text = "\n" + createOutlineSameDepthAs(currentOutline);
+            addText(editor, file, offset, text);
         } else {
             // the text is not part of an outline, maybe we're in the body of one
             currentOutline = findPreviousOutline(element);
             if (currentOutline != null) {
-                addText(editor, file, currentOutline.getTextRange().getEndOffset(), createOutlineSameDepthAs(currentOutline));
+                final int offset = currentOutline.getTextRange().getEndOffset();
+                final String text = "\n" + createOutlineSameDepthAs(currentOutline);
+                addText(editor, file, offset, text);
             } else {
                 // there's no outline occurring before the caret, maybe there's one in the following text
                 currentOutline = findNextOutline(element);
                 if (currentOutline != null) {
-                    addText(editor, file, currentOutline.getTextRange().getStartOffset(), createOutlineSameDepthAs(currentOutline));
+                    final int offset = currentOutline.getTextRange().getStartOffset();
+                    final String text = createOutlineSameDepthAs(currentOutline) + "\n";
+                    addTextAndGoBackOne(editor, file, offset, text);
                 } else {
                     // there's no outline in the full text
-                    addText(editor, file, document.getText().length(), "\n* ");
+                    final int documentEnd = document.getText().length();
+                    addText(editor, file, documentEnd, "\n* ");
                 }
             }
         }
@@ -72,22 +79,28 @@ public class NewOutlineSameLevel extends AnAction {
         }.execute();
     }
 
-    private PsiElement findNextOutline(PsiElement element) {
-        final PsiElement topmostParent = PsiTreeUtil.getTopmostParentOfType(element, PsiElement.class);
-        if(topmostParent != null) {
-            PsiElement candidate = topmostParent.getNextSibling();
-            while(candidate != null && !isOutlineBlock(candidate)) {
-                candidate = candidate.getNextSibling();
+    private void addTextAndGoBackOne(@NotNull final Editor editor, @NotNull final PsiFile file, final int offset, @NotNull final String text) {
+        new WriteCommandAction.Simple<String>(editor.getProject(), file) {
+            @Override
+            protected void run() throws Throwable {
+                final Document document = editor.getDocument();
+                document.insertString(offset, text);
+                editor.getCaretModel().getCurrentCaret().moveToOffset(offset + text.length() - 1);
             }
+        }.execute();
+    }
 
-            return candidate;
+    private PsiElement findNextOutline(PsiElement element) {
+        PsiElement candidate = element.getNextSibling();
+        while(candidate != null && !isOutlineBlock(candidate)) {
+            candidate = candidate.getNextSibling();
         }
 
-        return null;
+        return candidate;
     }
 
     private String createOutlineSameDepthAs(PsiElement currentOutline) {
-        return "\n" + currentOutline.getText().split("\\s")[0] + " ";
+        return currentOutline.getText().split("\\s")[0] + " ";
     }
 
     private PsiElement findPreviousOutline(PsiElement element) {
