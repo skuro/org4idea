@@ -55,7 +55,7 @@
         <action id="Org4Idea.NewOutlineSameLevel" class="tk.skuro.idea.orgmode.editor.actions.NewOutlineSameLevel"
                 text="New outline" description="Create a new outline at the same level as the current one">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="ctrl ENTER"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="control alt meta ENTER"/>
         </action>
     </actions>
 
