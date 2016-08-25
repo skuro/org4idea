@@ -100,7 +100,7 @@ public class NewOutlineSameLevel extends AnAction {
         PsiElement candidate = element.getNextSibling();
         int depth = outlineDepth(element);
         while(candidate != null) {
-            if(isOutlineBlock(candidate) && outlineDepth(candidate) == depth) break;
+            if(isOutlineBlock(candidate) && outlineDepth(candidate) <= depth) break;
             candidate = candidate.getNextSibling();
         }
 
