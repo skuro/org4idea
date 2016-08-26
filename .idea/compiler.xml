@@ -18,5 +18,9 @@
         <processorPath useClasspath="true" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="org4idea_main" target="1.8" />
+      <module name="org4idea_test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

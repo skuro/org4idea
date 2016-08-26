@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/org4idea.iml" filepath="$PROJECT_DIR$/org4idea.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org4idea.iml" filepath="$PROJECT_DIR$/.idea/modules/org4idea.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org4idea_main.iml" filepath="$PROJECT_DIR$/.idea/modules/org4idea_main.iml" group="org4idea" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org4idea_test.iml" filepath="$PROJECT_DIR$/.idea/modules/org4idea_test.iml" group="org4idea" />
     </modules>
   </component>
 </project>
