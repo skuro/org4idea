@@ -21,3 +21,5 @@ out
 # §see uf version part of it
 3rd-party
 .gradle
+org4idea.ipr
+org4idea.iws
