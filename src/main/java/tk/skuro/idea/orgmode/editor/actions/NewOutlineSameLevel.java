@@ -32,6 +32,8 @@ public class NewOutlineSameLevel extends AnAction {
             final PsiElement element = file.findElementAt(offset);
             if(element != null) {
                 addOutline(element, editor, file);
+            } else {
+                addText(editor, file, 0, "* ");
             }
         }
     }
