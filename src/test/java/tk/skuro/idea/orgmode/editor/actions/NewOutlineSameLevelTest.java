@@ -9,14 +9,10 @@ import com.intellij.testFramework.TestDataProvider;
 import com.intellij.testFramework.fixtures.LightCodeInsightFixtureTestCase;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertNotNull;
 
 public class NewOutlineSameLevelTest extends LightCodeInsightFixtureTestCase {
 
-    NewOutlineSameLevel action = new NewOutlineSameLevel();
+    private NewOutlineSameLevel action = new NewOutlineSameLevel();
 
     @Before
     public void setUp() throws Exception {
