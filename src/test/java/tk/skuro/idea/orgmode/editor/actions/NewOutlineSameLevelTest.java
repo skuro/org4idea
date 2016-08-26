@@ -25,11 +25,7 @@ public class NewOutlineSameLevelTest extends LightCodeInsightFixtureTestCase {
     }
 
     public void testNewOutlineInEmptyFile() {
-        final PsiFile org = myFixture.configureByText("empty.org", "");
-        final DataContext ctx = new TestDataProvider(org.getProject());
-        final TestActionEvent event = new TestActionEvent(ctx);
-        action.actionPerformed(event);
-        assertCaretPosition("The caret was not placed after the newly created outline", ctx, 2);
+        addOutlineAndAssertCaret("", 2);
     }
 
     public void testNewOutlineInFileWithNoOutlines() {
@@ -37,11 +33,15 @@ public class NewOutlineSameLevelTest extends LightCodeInsightFixtureTestCase {
                 "#+BEGIN_SRC\n" +
                 "I'm code!" +
                 "#+END_SRC";
-        final PsiFile org = myFixture.configureByText("no-outlines.org", orgText);
+        addOutlineAndAssertCaret(orgText, orgText.length() + 3);
+    }
+
+    private void addOutlineAndAssertCaret(final String text, final int position) {
+        final PsiFile org = myFixture.configureByText("test.org", text);
         final DataContext ctx = new TestDataProvider(org.getProject());
         final TestActionEvent event = new TestActionEvent(ctx);
         action.actionPerformed(event);
-        assertCaretPosition("The caret was not placed after the newly created outline", ctx, orgText.length() + 3);
+        assertCaretPosition("The caret was not placed after the newly created outline", ctx, position);
     }
 
     private void assertCaretPosition(String errMessage, DataContext ctx, int expected) {
