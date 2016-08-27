@@ -1,8 +1,5 @@
 /**
- * {@code TODO} tracking for Orgmode.
- *
- * inspired from Markdown and Xml Idea Plugins
-
+ * tracking for Orgmode inspired from Markdown and Xml Idea Plugins
  * @author Adriean Khisbe <adriean.khisbe@live.fr>
  * @since 0.2
  */
