@@ -15,7 +15,12 @@ import tk.skuro.idea.orgmode.parser.OrgTokenTypes;
 import tk.skuro.idea.orgmode.psi.OrgPsiElementImpl;
 
 /**
- * Create a new outline at the same level as the current one
+ * Create a new outline at the same level as the current one. The new outline is created at a different position
+ * depending on the shape of the text:
+ *
+ * - as a next sibling outline before any following outlines of the same or lower depth
+ * - at the beginning of the file if the file is empty
+ * - at the end of the file if it doesn't contain any outline
  *
  * @author Carlo Sciolla
  * @since 0.4.0
@@ -45,15 +50,20 @@ public class NewOutlineSameLevel extends AnAction {
         PsiElement currentOutline = getParentOutlineOrSelf(element);
         if (currentOutline != null) {
             final int offset = endOfOutline(currentOutline);
-            final String text = "\n" + createOutlineSameDepthAs(currentOutline);
+            final String text = createOutlineSameDepthAs(currentOutline);
             addText(editor, file, offset, text);
         } else {
-            // the text is not part of an outline, maybe we're in the body of one
+            // the caret is not within an outline text, maybe we're in the body of one
             currentOutline = findPreviousOutline(element);
             if (currentOutline != null) {
                 final int offset = endOfOutline(currentOutline);
-                final String text = "\n" + createOutlineSameDepthAs(currentOutline);
-                addText(editor, file, offset, text);
+                final String outlineText = createOutlineSameDepthAs(currentOutline);
+                if(isEOF(offset, file)) {
+                    addText(editor, file, offset, outlineText);
+                }
+                else {
+                    addTextAndGoBackOne(editor, file, offset, outlineText + "\n");
+                }
             } else {
                 // there's no outline occurring before the caret, maybe there's one in the following text
                 currentOutline = findNextOutlineSameDepth(element);
@@ -64,10 +74,14 @@ public class NewOutlineSameLevel extends AnAction {
                 } else {
                     // there's no outline in the full text
                     final int documentEnd = document.getText().length();
-                    addText(editor, file, documentEnd, "\n* ");
+                    addText(editor, file, documentEnd, "* ");
                 }
             }
         }
+    }
+
+    private boolean isEOF(int offset, PsiFile file) {
+        return offset == file.getTextRange().getEndOffset();
     }
 
     private int endOfOutline(PsiElement currentOutline) {
@@ -78,22 +92,34 @@ public class NewOutlineSameLevel extends AnAction {
 
     private void addText(@NotNull final Editor editor, @NotNull final PsiFile file, final int offset, @NotNull final String text) {
         new WriteCommandAction.Simple<String>(editor.getProject(), file) {
+            private boolean isNewlineBefore(final int offset) {
+                final String text = editor.getDocument().getText();
+                return offset == 0 || offset > 0 && offset <= text.length() && '\n' == text.charAt(offset - 1);
+            }
+
             @Override
             protected void run() throws Throwable {
                 final Document document = editor.getDocument();
-                document.insertString(offset, text);
-                editor.getCaretModel().getCurrentCaret().moveToOffset(offset + text.length());
+                final String textToEnter = isNewlineBefore(offset) ? text : "\n" + text;
+                document.insertString(offset, textToEnter);
+                editor.getCaretModel().getCurrentCaret().moveToOffset(offset + textToEnter.length());
             }
         }.execute();
     }
 
     private void addTextAndGoBackOne(@NotNull final Editor editor, @NotNull final PsiFile file, final int offset, @NotNull final String text) {
         new WriteCommandAction.Simple<String>(editor.getProject(), file) {
+            private boolean isNewlineBefore(final int offset) {
+                final String text = editor.getDocument().getText();
+                return offset > 0 && offset <= text.length() && '\n' == text.charAt(offset - 1);
+            }
+
             @Override
             protected void run() throws Throwable {
                 final Document document = editor.getDocument();
-                document.insertString(offset, text);
-                editor.getCaretModel().getCurrentCaret().moveToOffset(offset + text.length() - 1);
+                final String textToEnter = isNewlineBefore(offset) ? text : "\n" + text;
+                document.insertString(offset, textToEnter);
+                editor.getCaretModel().getCurrentCaret().moveToOffset(offset + textToEnter.length() - 1);
             }
         }.execute();
     }

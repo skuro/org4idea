@@ -59,6 +59,22 @@ public class NewOutlineSameLevelTest extends LightCodeInsightFixtureTestCase {
         moveCaretAddOutlineAndAssertCaret(orgText.length() - 10, orgText, orgText.length() + "\n** ".length());
     }
 
+    public void testNewOutlineFromInnerOutlineBodyWithFollowingOutline() {
+        final String orgTextBeforeCaret =
+                "* I'm an outer outline\n" +
+                        "I'm the body of the outline\n" +
+                        "** I'm the inner outline\n" +
+                        "And here's ";
+        final String orgTextAfterCaret = "some text\n" +
+                "* Now another first level outline\n" +
+                "Then also some other text";
+        final String orgText = orgTextBeforeCaret + orgTextAfterCaret;
+        final String expectedOrgTextBeforeCaret = orgTextBeforeCaret +
+                "some text\n" +
+                "** ";
+        moveCaretAddOutlineAndAssertCaret(orgTextBeforeCaret.length(), orgText, expectedOrgTextBeforeCaret.length());
+    }
+
     private void addOutlineAndAssertCaret(final String text, final int position) {
         moveCaretAddOutlineAndAssertCaret(0, text, position);
     }
