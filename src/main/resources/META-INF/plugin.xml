@@ -25,6 +25,17 @@
 
     <change-notes>
         <![CDATA[
+            <p>0.4.0</p>
+            <h3>New end-user features:</h3>
+            <ul>
+                <li>New action to insert a new outline (similar to C-RET in emacs), with a default keybinding of <pre>ctrl alt meta enter</pre></li>
+            </ul>
+            <h3>New developer features:</h3>
+            <ul>
+                <li>Build system now based on Gradle</li>
+                <li>Better test code using the IntelliJ SDK infrastructure</li>
+                <li>The project is automagically built by SemaphoreCI</li>
+            </ul>
             <p>0.3.1</p>
             <ul>
                 <li>Code folding now works on outlines</li>

@@ -24,7 +24,8 @@ These feature only requires some Intellij customisation of the plugin, and basic
   The following feature will require some working grammar and a parser to be really supported.
   - [X] proper file parsing
   - [X] folding (only for drawers and blocks)
-  - [ ] folding (for outlines)
+  - [X] folding (for outlines)
+  - [X] hotkey to insert new outline (ctrl alt meta enter)
   - [ ] tagging
 
 ** Miscellaneous

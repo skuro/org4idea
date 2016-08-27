@@ -45,15 +45,15 @@ public class NewOutlineSameLevel extends AnAction {
         PsiElement currentOutline = getParentOutlineOrSelf(element);
         if (currentOutline != null) {
             final int offset = endOfOutline(currentOutline);
-            final String text = createOutlineSameDepthAs(currentOutline) + "\n";
-            addTextAndGoBackOne(editor, file, offset, text);
+            final String text = "\n" + createOutlineSameDepthAs(currentOutline);
+            addText(editor, file, offset, text);
         } else {
             // the text is not part of an outline, maybe we're in the body of one
             currentOutline = findPreviousOutline(element);
             if (currentOutline != null) {
                 final int offset = endOfOutline(currentOutline);
-                final String text = createOutlineSameDepthAs(currentOutline) + "\n";
-                addTextAndGoBackOne(editor, file, offset, text);
+                final String text = "\n" + createOutlineSameDepthAs(currentOutline);
+                addText(editor, file, offset, text);
             } else {
                 // there's no outline occurring before the caret, maybe there's one in the following text
                 currentOutline = findNextOutlineSameDepth(element);
