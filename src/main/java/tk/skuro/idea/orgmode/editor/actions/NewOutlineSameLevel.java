@@ -66,10 +66,10 @@ public class NewOutlineSameLevel extends AnAction {
                 }
             } else {
                 // there's no outline occurring before the caret, maybe there's one in the following text
-                currentOutline = findNextOutlineSameDepth(element);
+                currentOutline = findNextOutline(element);
                 if (currentOutline != null) {
                     final int offset = currentOutline.getTextRange().getStartOffset();
-                    final String text = createOutlineSameDepthAs(currentOutline) + "\n";
+                    final String text = "* \n";
                     addTextAndGoBackOne(editor, file, offset, text);
                 } else {
                     // there's no outline in the full text
@@ -85,7 +85,7 @@ public class NewOutlineSameLevel extends AnAction {
     }
 
     private int endOfOutline(PsiElement currentOutline) {
-        PsiElement candidate = findNextOutlineSameDepth(currentOutline);
+        PsiElement candidate = findNextOutlineSameDepthOrHigher(currentOutline);
         return candidate == null? currentOutline.getContainingFile().getTextRange().getEndOffset() :
                 candidate.getTextOffset();
     }
@@ -124,19 +124,32 @@ public class NewOutlineSameLevel extends AnAction {
         }.execute();
     }
 
-    private PsiElement findNextOutlineSameDepth(PsiElement element) {
+    private PsiElement findNextOutlineSameDepthOrHigher(PsiElement element) {
         PsiElement candidate = element.getNextSibling();
         int depth = outlineDepth(element);
-        while(candidate != null) {
-            if(isOutlineBlock(candidate) && outlineDepth(candidate) <= depth) break;
+        while(candidate != null && !isOutlineBlock(candidate) && outlineDepth(candidate) <= depth) {
             candidate = candidate.getNextSibling();
         }
 
         return candidate;
     }
 
-    private int outlineDepth(final PsiElement outline) {
-        return outline.getText().split("\\s")[0].length();
+    private PsiElement findNextOutline(PsiElement element) {
+        PsiElement candidate = findRootLevel(element);
+        while(candidate != null && !isOutlineBlock(candidate)) {
+            candidate = candidate.getNextSibling();
+        }
+
+        return candidate;
+    }
+
+    private int outlineDepth(final PsiElement element) {
+        if(isOutlineBlock(element)) {
+            return element.getText().split("\\s")[0].length();
+        }
+
+        final PsiElement previousOutline = findPreviousOutline(element);
+        return previousOutline == null?  0 : outlineDepth(previousOutline);
     }
 
     private String createOutlineSameDepthAs(PsiElement currentOutline) {
