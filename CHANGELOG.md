@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.4.0] - 2018-08-29
+### Added
++ New action to insert a new outline (similar to C-RET in emacs), with a default key binding of <pre>ctrl alt meta enter</pre>
+### Changed
++ Build system now based on Gradle
++ Better test code using the IntelliJ SDK infrastructure
+
 ## [0.3.1] - 2016-08-10
 ### Added
 + Code folding for outlines
@@ -15,7 +22,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.2] - 2015-02-14
 ### Added
 + Many new features:
-  - Spellchekying support
+  - Spellchecking support
   - Live templates
   - Commenter
   - Todo Indexing

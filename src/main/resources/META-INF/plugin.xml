@@ -2,7 +2,7 @@
     <name>Org4Idea</name>
     <description>An OrgMode editor for IntelliJ IDEA</description>
     <category>Custom Languages</category>
-    <version>0.3.1</version>
+    <version>0.4.0</version>
     <vendor email="skuro@skuro.tk" url="http://skuro.tk">Carlo Sciolla</vendor>
     <depends>com.intellij.modules.lang</depends>
 
@@ -34,7 +34,6 @@
             <ul>
                 <li>Build system now based on Gradle</li>
                 <li>Better test code using the IntelliJ SDK infrastructure</li>
-                <li>The project is automagically built by SemaphoreCI</li>
             </ul>
             <p>0.3.1</p>
             <ul>
