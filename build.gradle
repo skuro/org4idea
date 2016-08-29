@@ -20,7 +20,6 @@ intellij {
     publish {
         username jetbrains_username ?: ""
         password jetbrains_password ?: ""
-        pluginId '7095'
     }
 }
 

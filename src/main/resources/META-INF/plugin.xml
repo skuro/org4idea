@@ -4,6 +4,7 @@
     <category>Custom Languages</category>
     <version>0.4.0</version>
     <vendor email="skuro@skuro.tk" url="http://skuro.tk">Carlo Sciolla</vendor>
+    <id>Org4Idea</id>
     <depends>com.intellij.modules.lang</depends>
 
     <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
