@@ -16,6 +16,7 @@ intellij {
     version 'IC-2016.1'
     plugins = ['coverage']   //Bundled plugin dependencies
     pluginName 'org4idea'
+    updateSinceUntilBuild false
 
     publish {
         username jetbrains_username ?: ""
