@@ -2,7 +2,7 @@
     <name>Org4Idea</name>
     <description>An OrgMode editor for IntelliJ IDEA</description>
     <category>Custom Languages</category>
-    <version>0.4.0</version>
+    <version>0.4.1</version>
     <vendor email="skuro@skuro.tk" url="http://skuro.tk">Carlo Sciolla</vendor>
     <id>Org4Idea</id>
     <depends>com.intellij.modules.lang</depends>
@@ -26,6 +26,11 @@
 
     <change-notes>
         <![CDATA[
+            <p>0.4.1</p>
+            <h3>Improved compatibility with newer Idea versions</h3>
+            <ul>
+                <li><a href="https://github.com/skuro/org4idea/pull/6">#6</a> Fixed generated plugin file incompatible with latest IDEA</li>
+            </ul>
             <p>0.4.0</p>
             <h3>New end-user features:</h3>
             <ul>
