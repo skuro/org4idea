@@ -13,15 +13,15 @@ apply plugin: 'org.jetbrains.intellij'
 apply plugin: 'java'
 
 intellij {
-    version 'IC-2016.1'
+    version = 'IC-2021.2.3'
     plugins = ['coverage']   //Bundled plugin dependencies
-    pluginName 'org4idea'
-    updateSinceUntilBuild false
+    pluginName = 'org4idea'
+    updateSinceUntilBuild = false
 
-    publish {
-        username jetbrains_username ?: ""
-        password jetbrains_password ?: ""
-    }
+//    publish {
+//        username jetbrains_username ?: ""
+//        password jetbrains_password ?: ""
+//    }
 }
 
 group 'tk.skuro.intellij'
