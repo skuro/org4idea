@@ -23,3 +23,5 @@ out
 .gradle
 org4idea.ipr
 org4idea.iws
+
+.idea/
