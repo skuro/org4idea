@@ -12,16 +12,19 @@ apply plugin: 'idea'
 apply plugin: 'org.jetbrains.intellij'
 apply plugin: 'java'
 
+repositories {
+    mavenCentral()
+}
+
 intellij {
     version = 'IC-2021.2.3'
     plugins = ['coverage']   //Bundled plugin dependencies
     pluginName = 'org4idea'
     updateSinceUntilBuild = false
+}
 
-//    publish {
-//        username jetbrains_username ?: ""
-//        password jetbrains_password ?: ""
-//    }
+publishPlugin {
+    token = jetbrains_token ?: ""
 }
 
 group 'tk.skuro.intellij'
