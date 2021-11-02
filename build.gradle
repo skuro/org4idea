@@ -24,7 +24,7 @@ intellij {
 }
 
 publishPlugin {
-    token = jetbrains_token ?: ""
+    token = project.findProperty('jetbrains_token') ?: ""
 }
 
 group 'tk.skuro.intellij'
