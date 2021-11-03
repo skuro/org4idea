@@ -5,23 +5,26 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.intellij" version "0.1.10"
+    id "org.jetbrains.intellij" version "1.2.0"
 }
 
 apply plugin: 'idea'
 apply plugin: 'org.jetbrains.intellij'
 apply plugin: 'java'
 
-intellij {
-    version 'IC-2016.1'
-    plugins = ['coverage']   //Bundled plugin dependencies
-    pluginName 'org4idea'
-    updateSinceUntilBuild false
+repositories {
+    mavenCentral()
+}
 
-    publish {
-        username jetbrains_username ?: ""
-        password jetbrains_password ?: ""
-    }
+intellij {
+    version = 'IC-2021.2.3'
+    plugins = ['coverage']   //Bundled plugin dependencies
+    pluginName = 'org4idea'
+    updateSinceUntilBuild = false
+}
+
+publishPlugin {
+    token = project.findProperty('jetbrains_token') ?: ""
 }
 
 group 'tk.skuro.intellij'
