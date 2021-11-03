@@ -1,0 +1,3 @@
+if (!JavaVersion.current().isJava11Compatible()) {
+    throw new GradleException("This project requires Java 11, but it's running on " + JavaVersion.current())
+}
